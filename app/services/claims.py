@@ -1,5 +1,7 @@
 """Claim checks and settlement, connecting the database models to the pure settlement math."""
 
+import re
+from datetime import date
 from decimal import Decimal
 
 from sqlalchemy import func, select
@@ -36,18 +38,59 @@ def already_paid(db: Session, claim: Claim) -> Decimal:
     return Decimal(str(total))
 
 
+_QUANTITY = re.compile(r"\b(\d{1,3})\s*(?:days?|nights?|visits?)\b", re.IGNORECASE)
+
+
+def _stay_days(claim: Claim) -> int | None:
+    """Length of stay from the analysis, only when every source agrees on both dates."""
+    fields = (claim.analysis or {}).get("fields") or {}
+    admitted, discharged = fields.get("admission_date") or {}, fields.get("discharge_date") or {}
+    if admitted.get("status") != "provided" or discharged.get("status") != "provided":
+        return None
+    return max((date.fromisoformat(discharged["value"]) - date.fromisoformat(admitted["value"])).days, 1)
+
+
+def bill_items(claim: Claim) -> list[settlement.Item]:
+    """Expense lines the AI read from the bill(s), taken from the stored analysis.
+
+    The quantity (days / visits) for per-unit caps is read by code from the line's own quote ("3 days", "2 visits");
+    a room line without one uses the length of stay, anything else counts as 1.
+    """
+    summary = ((claim.analysis or {}).get("fields") or {}).get("line_items") or {}
+    if summary.get("status") != "provided" or "claimant_document" not in summary.get("provenance", []):
+        return []
+    stay = _stay_days(claim)
+    items = []
+    for line in summary.get("value") or []:
+        match = _QUANTITY.search(f"{line.get('description', '')} {line.get('evidence') or ''}")
+        quantity = int(match.group(1)) if match else (stay or 1 if line["category"] == "room" else 1)
+        items.append(settlement.Item(line["category"], line["description"], Decimal(str(line["amount"])), quantity))
+    return items
+
+
+def settlement_items(claim: Claim) -> tuple[list[settlement.Item], str]:
+    """The claimant's typed expense items if there are any, otherwise the bill's line items."""
+    if claim.items:
+        return [settlement.Item(i.category, i.description, i.amount, i.quantity) for i in claim.items], "claimant"
+    return bill_items(claim), "bill"
+
+
 def missing_documents(claim: Claim) -> list[str]:
     uploaded = {doc.doc_type for doc in claim.documents}
     return [doc_type for doc_type in claim.policy.plan.required_documents if doc_type not in uploaded]
 
 
-def check_claim(db: Session, claim: Claim) -> list[str]:
-    """Problems an admin should look at before approving. Empty list = nothing suspicious found."""
+def check_claim(db: Session, claim: Claim, during_analysis: bool = False) -> list[str]:
+    """Problems an admin should look at before approving. Empty list = nothing suspicious found.
+
+    `during_analysis`: called while the analysis is being built, so the bill's line items aren't stored yet
+    (the analysis reports missing line items itself).
+    """
     flags: list[str] = []
     policy = claim.policy
 
-    if not claim.items:
-        flags.append("No expense items entered.")
+    if not during_analysis and not claim.items and not bill_items(claim):
+        flags.append("No expense items: none were typed and none could be read from the bill.")
     for doc_type in missing_documents(claim):
         flags.append(f"Missing required document: {doc_type}.")
 
@@ -79,8 +122,9 @@ def check_claim(db: Session, claim: Claim) -> list[str]:
 
 def calculate_claim(db: Session, claim: Claim) -> CalculationOut:
     plan = claim.policy.plan
+    items, source = settlement_items(claim)
     result = settlement.calculate(
-        items=[settlement.Item(i.category, i.description, i.amount, i.quantity) for i in claim.items],
+        items=items,
         rules=plan_rules(plan),
         deductible=plan.deductible,
         annual_limit=plan.annual_limit,
@@ -88,6 +132,7 @@ def calculate_claim(db: Session, claim: Claim) -> CalculationOut:
     )
     return CalculationOut(
         currency=plan.currency,
+        items_source=source,
         lines=[CalculationLine(**line.__dict__) for line in result.lines],
         total_claimed=result.total_claimed,
         total_covered=result.total_covered,

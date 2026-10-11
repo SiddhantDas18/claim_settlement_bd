@@ -34,9 +34,13 @@ def _require_draft(claim: Claim) -> None:
         raise HTTPException(status.HTTP_409_CONFLICT, f"Claim is {claim.status}; only drafts can be changed.")
 
 
-def _set_items(claim: Claim, items: list[ClaimItemIn]) -> None:
+def _set_items(claim: Claim, items: list[ClaimItemIn], claimed_amount: Decimal | None) -> None:
+    """Typed expense items set the claimed total; without items the claimant types the total directly."""
     claim.items = [ClaimItem(**item.model_dump()) for item in items]
-    claim.claimed_amount = sum((item.amount for item in items), Decimal("0"))
+    if items:
+        claim.claimed_amount = sum((item.amount for item in items), Decimal("0"))
+    elif claimed_amount is not None:
+        claim.claimed_amount = claimed_amount
 
 
 @router.post("", response_model=ClaimOut, status_code=status.HTTP_201_CREATED)
@@ -44,8 +48,8 @@ def create_claim(data: ClaimCreate, user: CurrentUser, db: DbSession) -> Claim:
     policy = db.get(Policy, data.policy_id)
     if policy is None or policy.user_id != user.id:
         raise HTTPException(status.HTTP_404_NOT_FOUND, "Policy not found.")
-    claim = Claim(user_id=user.id, **data.model_dump(exclude={"items"}))
-    _set_items(claim, data.items)
+    claim = Claim(user_id=user.id, **data.model_dump(exclude={"items", "claimed_amount"}))
+    _set_items(claim, data.items, data.claimed_amount)
     db.add(claim)
     db.commit()
     return claim
@@ -65,11 +69,13 @@ def get_claim(claim_id: int, user: CurrentUser, db: DbSession) -> Claim:
 def update_claim(claim_id: int, data: ClaimUpdate, user: CurrentUser, db: DbSession) -> Claim:
     claim = get_claim_for_user(db, claim_id, user)
     _require_draft(claim)
-    changes = data.model_dump(exclude_unset=True, exclude={"items"})
+    changes = data.model_dump(exclude_unset=True, exclude={"items", "claimed_amount"})
     for field, value in changes.items():
         setattr(claim, field, value)
     if data.items is not None:
-        _set_items(claim, data.items)
+        _set_items(claim, data.items, data.claimed_amount)
+    elif "claimed_amount" in data.model_fields_set and not claim.items and data.claimed_amount is not None:
+        claim.claimed_amount = data.claimed_amount
     db.commit()
     return claim
 
@@ -137,8 +143,8 @@ def submit_claim(claim_id: int, user: CurrentUser, db: DbSession) -> Claim:
     claim = get_claim_for_user(db, claim_id, user)
     _require_draft(claim)
     problems = []
-    if not claim.items:
-        problems.append("Add at least one expense item.")
+    if not claim.items and not claim.claimed_amount:
+        problems.append("Enter the total amount you are claiming.")
     problems += [f"Upload a {doc_type} document." for doc_type in missing_documents(claim)]
     if problems:
         raise HTTPException(status.HTTP_400_BAD_REQUEST, problems)

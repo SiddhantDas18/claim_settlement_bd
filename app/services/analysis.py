@@ -465,9 +465,10 @@ def run_analysis(request: AnalyzeRequest, extractor: Extractor | None = None) ->
 def form_from_claim(claim: Claim) -> ClaimForm:
     return ClaimForm(
         invoice_number=claim.invoice_number,
+        hospital_name=claim.hospital_name,
         admission_date=claim.treatment_start,
         discharge_date=claim.treatment_end,
-        total_amount=claim.claimed_amount if claim.items else None,
+        total_amount=claim.claimed_amount if claim.claimed_amount else None,
         line_items=[{"description": i.description, "amount": i.amount, "category": i.category} for i in claim.items],
         description=claim.description,
     )
@@ -476,8 +477,8 @@ def form_from_claim(claim: Claim) -> ClaimForm:
 def analyze_claim(db: Session, claim: Claim, extractor: Extractor | None = None) -> ClaimAnalysis:
     extract = extractor or ai_extraction.extract_document
     extractions = []
-    for doc in claim.documents:
-        name = f"{doc.doc_type} #{doc.id} ({doc.original_filename})"
+    names = _unique_names([f"{doc.doc_type.replace('_', ' ').capitalize()} ({doc.original_filename})" for doc in claim.documents])
+    for doc, name in zip(claim.documents, names):
         result = extract(name, doc.doc_type, doc.extracted_text or "")
         if doc.extraction_error and result.error:
             result.error = f"{result.error} Text extraction: {doc.extraction_error}"
@@ -493,7 +494,7 @@ def analyze_claim(db: Session, claim: Claim, extractor: Extractor | None = None)
             end_date=policy.end_date,
         ),
         required_documents=policy.plan.required_documents,
-        extra_flags=[ValidationFlag(code="claim_check", severity="warning", message=m) for m in check_claim(db, claim)],
+        extra_flags=[ValidationFlag(code="claim_check", severity="warning", message=m) for m in check_claim(db, claim, during_analysis=True)],
     )
 
 

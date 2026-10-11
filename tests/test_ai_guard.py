@@ -107,6 +107,29 @@ class ExtractDocumentTests(unittest.TestCase):
         self.assertIsNone(result.fields["hospital_name"].value)
         self.assertEqual(result.prompt_version, "extraction_v1")
 
+    def test_dropped_connection_is_retried_then_reported(self):
+        import httpx
+
+        calls = []
+
+        class FlakyModels:
+            def generate_content(self, **kwargs):
+                calls.append(1)
+                raise httpx.RemoteProtocolError("Server disconnected without sending a response.")
+
+        fake_client = mock.Mock(models=FlakyModels())
+        with mock.patch.object(ai_extraction.settings, "gemini_api_key", "test-key"), \
+             mock.patch.object(ai_extraction, "_client", return_value=fake_client), \
+             mock.patch.object(ai_extraction.time, "sleep"):
+            result = ai_extraction.extract_document("Bill", "hospital_bill", BILL_TEXT, "extraction_v1")
+        self.assertEqual(len(calls), 6)  # retried, not crashed
+        self.assertIn("Could not reach Gemini", result.error)
+
+    def test_unexpected_sdk_error_is_reported_not_raised(self):
+        with mock.patch.object(ai_extraction, "call_gemini", side_effect=RuntimeError("boom")):
+            result = ai_extraction.extract_document("Bill", "hospital_bill", BILL_TEXT, "extraction_v1")
+        self.assertIn("Unexpected error", result.error)
+
     def test_invalid_json_is_an_error(self):
         with mock.patch.object(ai_extraction, "call_gemini", return_value="not json"):
             result = ai_extraction.extract_document("Bill", "hospital_bill", BILL_TEXT, "extraction_v1")

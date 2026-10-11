@@ -33,6 +33,7 @@ class Claim(Base):
     policy_id: Mapped[int] = mapped_column(ForeignKey("policies.id"))
     status: Mapped[str] = mapped_column(String(20), default=ClaimStatus.DRAFT, index=True)
     invoice_number: Mapped[str | None] = mapped_column(String(100), index=True)
+    hospital_name: Mapped[str | None] = mapped_column(String(255))
     treatment_start: Mapped[date | None] = mapped_column(Date)
     treatment_end: Mapped[date | None] = mapped_column(Date)
     description: Mapped[str | None] = mapped_column(Text)
@@ -55,6 +56,13 @@ class Claim(Base):
         """The stored analysis' recommended triage (system_inferred), for list views."""
         try:
             return self.analysis["recommendations"]["triage_category"]["value"]  # type: ignore[index]
+        except (TypeError, KeyError):
+            return None
+
+    @property
+    def triage_reason(self) -> str | None:
+        try:
+            return self.analysis["recommendations"]["triage_category"]["reason"]  # type: ignore[index]
         except (TypeError, KeyError):
             return None
 
