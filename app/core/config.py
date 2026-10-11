@@ -9,7 +9,7 @@ class Settings(BaseSettings):
 
     model_config = SettingsConfigDict(env_file=".env", extra="ignore")
 
-    database_url: str = "sqlite:///./claims.db"
+    database_url: str = "postgresql+psycopg://postgres:postgres@localhost:5432/claim_settlement"
     upload_dir: Path = Path("uploads")
     max_upload_mb: int = 10
     cors_origins: list[str] = ["http://localhost:5173"]

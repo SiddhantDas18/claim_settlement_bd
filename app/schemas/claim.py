@@ -65,6 +65,7 @@ class ClaimOut(BaseModel):
     treatment_end: date | None
     description: str | None
     claimed_amount: Money
+    triage_category: str | None  # from the stored analysis; system_inferred
     approved_amount: Money | None
     admin_note: str | None
     submitted_at: datetime | None

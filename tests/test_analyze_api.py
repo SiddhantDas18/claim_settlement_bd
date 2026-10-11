@@ -80,6 +80,14 @@ class AnalyzeEndpointTests(unittest.TestCase):
         self.assertEqual(provenances[("document_type", "Bill")], "system_inferred")
         self.assertEqual(data["extractions"][0]["prompt_version"], "extraction_v3")
 
+    def test_examples_are_valid_requests(self):
+        app.dependency_overrides[require_admin] = lambda: None
+        response = self.client.get("/api/v1/analyze/examples")
+        self.assertEqual(response.status_code, 200)
+        examples = response.json()
+        self.assertEqual(len(examples), 24)
+        self.assertTrue(all(source["text"].strip() for e in examples for source in e["request"]["sources"]))
+
     def test_bad_input_is_rejected(self):
         app.dependency_overrides[require_admin] = lambda: None
         response = self.client.post("/api/v1/analyze", json={"sources": [{"name": "x", "type": "invoice", "text": "..."}]})
