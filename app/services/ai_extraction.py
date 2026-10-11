@@ -9,6 +9,8 @@ A value that fails any check becomes null, so it shows up as missing instead of 
 
 import hashlib
 import logging
+from concurrent.futures import ThreadPoolExecutor
+from concurrent.futures import TimeoutError as FutureTimeout
 import re
 import time
 from decimal import Decimal
@@ -88,7 +90,9 @@ def build_prompt(template: str, name: str, doc_type: str, text: str) -> str:
 # ---- Gemini call (with cache and retry) ----
 
 
-GEMINI_TIMEOUT_MS = 90_000  # one document; a hung connection must not block a submission forever
+GEMINI_TIMEOUT_MS = 90_000  # passed to the SDK; it only fires while no bytes arrive at all
+HARD_DEADLINE_S = 100  # our own limit per call: a connection that stays open without answering is abandoned
+_pool = ThreadPoolExecutor(max_workers=4, thread_name_prefix="gemini")
 
 
 @cache
@@ -123,7 +127,15 @@ def call_gemini(prompt: str, max_attempts: int = 6) -> str:
     for attempt in range(max_attempts):
         try:
             stats["api_calls"] += 1
-            response = _client().models.generate_content(model=settings.gemini_model, contents=prompt, config=config)
+            future = _pool.submit(_client().models.generate_content, model=settings.gemini_model, contents=prompt, config=config)
+            try:
+                response = future.result(timeout=HARD_DEADLINE_S)
+            except FutureTimeout:
+                future.cancel()
+                if attempt < 1:  # one more try; a second hang means Gemini is having trouble right now
+                    log.warning("Gemini gave no answer within %ss, retrying once", HARD_DEADLINE_S)
+                    continue
+                raise ExtractionError(f"Gemini gave no answer within {HARD_DEADLINE_S} seconds.") from None
             text = response.text or ""
             break
         except errors.APIError as exc:
