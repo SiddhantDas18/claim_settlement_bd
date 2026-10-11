@@ -125,6 +125,23 @@ class ExtractDocumentTests(unittest.TestCase):
         self.assertEqual(len(calls), 6)  # retried, not crashed
         self.assertIn("Could not reach Gemini", result.error)
 
+    def test_a_call_that_never_answers_is_abandoned(self):
+        import threading
+
+        never = threading.Event()
+
+        class HangingModels:
+            def generate_content(self, **kwargs):
+                never.wait(5)  # stands in for a connection that stays open with no answer
+
+        fake_client = mock.Mock(models=HangingModels())
+        with mock.patch.object(ai_extraction.settings, "gemini_api_key", "test-key"), \
+             mock.patch.object(ai_extraction, "_client", return_value=fake_client), \
+             mock.patch.object(ai_extraction, "HARD_DEADLINE_S", 0.2):
+            result = ai_extraction.extract_document("Bill", "hospital_bill", BILL_TEXT, "extraction_v1")
+        never.set()
+        self.assertIn("no answer", result.error)
+
     def test_unexpected_sdk_error_is_reported_not_raised(self):
         with mock.patch.object(ai_extraction, "call_gemini", side_effect=RuntimeError("boom")):
             result = ai_extraction.extract_document("Bill", "hospital_bill", BILL_TEXT, "extraction_v1")

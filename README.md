@@ -654,24 +654,24 @@ Details, the prompt diffs and before/after tables: [prompt_experiments/README.md
 
 ## Screenshots
 
-Taken from the React frontend ([`../Claim_Settlement_FD`](../Claim_Settlement_FD)) against this backend, with real Gemini calls. All files are in [`docs/screenshots/`](docs/screenshots/).
+Taken from the React frontend ([`../Claim_Settlement_FD`](../Claim_Settlement_FD)) running against this backend (PostgreSQL, real Gemini calls). All files are in [`docs/screenshots/`](docs/screenshots/).
 
-**Analyze playground, conflicting dates (case_19):** the conflict card shows each source's value and quote, nothing is resolved, and the banner confirms the result matches the test case's expected answer.
-![Analysis with a conflict](docs/screenshots/02_analyze_conflict.png)
+**Admin inbox:** tabs for To review / To pay / History; each claim shows the system's triage and why.
+![Admin inbox](docs/screenshots/08_admin_inbox_to_review.png)
 
-**Missing required document (case_16):**
-![Missing discharge summary](docs/screenshots/04_analyze_missing_document.png)
+**Claim with a contradiction:** block 1 shows what each source says (nothing is resolved), block 2 every fact with where it came from, block 3 the decision.
+![Claim with a conflict](docs/screenshots/09_admin_claim_conflict.png)
 
-**Two separate bills (case_24):** status "multiple", with a system-computed sum labelled as system inferred.
-![Two bills](docs/screenshots/05_analyze_two_bills.png)
+**Clean claim with settlement:** payable amount, how it's calculated (charges read from the bill, categories marked system-inferred), approve.
+![Clean claim with settlement](docs/screenshots/10_admin_claim_ready_with_settlement.png)
 
-**Claimant uploads a PDF bill and a photographed discharge summary (OCR):**
-![Claimant claim](docs/screenshots/06_claimant_claim_with_ocr.png)
+**Claimant uploads documents (step 2 of 3):** PDF bill read directly, photographed discharge summary read with OCR.
+![Claimant upload step](docs/screenshots/05_claimant_step2_uploaded.png)
 
-**Admin review: documents, analysis and settlement calculation:**
-![Admin review](docs/screenshots/08_admin_claim_review.png)
+**Claimant's claims with progress:**
+![My claims](docs/screenshots/14_claimant_my_claims.png)
 
-More: [login](docs/screenshots/01_login.png) · [field provenance expanded](docs/screenshots/03_field_provenance_expanded.png) · [claims queue](docs/screenshots/07_admin_claims_queue.png) · [payments](docs/screenshots/09_admin_payments.png) · [dark mode](docs/screenshots/10_analyze_dark_mode.png) · [phone width](docs/screenshots/11_analyze_phone_width.png)
+More: [login](docs/screenshots/01_login.png) · [settings / give a policy](docs/screenshots/02_admin_settings.png) · [step 1](docs/screenshots/03_claimant_step1_stay.png) · [step 2 empty](docs/screenshots/04_claimant_step2_empty.png) · [step 3](docs/screenshots/06_claimant_step3_review.png) · [submitted](docs/screenshots/07_claimant_submitted.png) · [sources & quotes](docs/screenshots/11_admin_sources_and_quotes.png) · [to pay](docs/screenshots/12_admin_to_pay.png) · [history](docs/screenshots/13_admin_history.png) · [test case page](docs/screenshots/15_admin_test_case.png) · [dark mode](docs/screenshots/16_dark_mode_claim.png) · [phone: admin](docs/screenshots/17_phone_admin_claim.png) · [phone: claimant](docs/screenshots/18_phone_claimant.png)
 
 ## AI usage disclosure
 
