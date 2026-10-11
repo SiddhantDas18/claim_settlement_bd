@@ -5,6 +5,7 @@ python-multipart>=0.0.9      # file uploads
 
 # Database + config
 sqlalchemy>=2.0
+psycopg[binary]>=3.2         # PostgreSQL driver
 pydantic-settings>=2.0
 
 # Login tokens

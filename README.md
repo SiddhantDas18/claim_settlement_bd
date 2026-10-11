@@ -654,7 +654,24 @@ Details, the prompt diffs and before/after tables: [prompt_experiments/README.md
 
 ## Screenshots
 
-_Placeholder: add screenshots or a demo video of the frontend / Swagger UI here._
+Taken from the React frontend ([`../Claim_Settlement_FD`](../Claim_Settlement_FD)) against this backend, with real Gemini calls. All files are in [`docs/screenshots/`](docs/screenshots/).
+
+**Analyze playground, conflicting dates (case_19):** the conflict card shows each source's value and quote, nothing is resolved, and the banner confirms the result matches the test case's expected answer.
+![Analysis with a conflict](docs/screenshots/02_analyze_conflict.png)
+
+**Missing required document (case_16):**
+![Missing discharge summary](docs/screenshots/04_analyze_missing_document.png)
+
+**Two separate bills (case_24):** status "multiple", with a system-computed sum labelled as system inferred.
+![Two bills](docs/screenshots/05_analyze_two_bills.png)
+
+**Claimant uploads a PDF bill and a photographed discharge summary (OCR):**
+![Claimant claim](docs/screenshots/06_claimant_claim_with_ocr.png)
+
+**Admin review: documents, analysis and settlement calculation:**
+![Admin review](docs/screenshots/08_admin_claim_review.png)
+
+More: [login](docs/screenshots/01_login.png) · [field provenance expanded](docs/screenshots/03_field_provenance_expanded.png) · [claims queue](docs/screenshots/07_admin_claims_queue.png) · [payments](docs/screenshots/09_admin_payments.png) · [dark mode](docs/screenshots/10_analyze_dark_mode.png) · [phone width](docs/screenshots/11_analyze_phone_width.png)
 
 ## AI usage disclosure
 
@@ -670,14 +687,24 @@ _To be completed by the author._
 
 ## Setup (new machine)
 
-Needs Python 3.11+. Everything installs through pip — no system packages (OCR models ship inside the `rapidocr` wheel).
+Needs Python 3.11+ and PostgreSQL 14+. Python packages install through pip (OCR models ship inside the `rapidocr` wheel).
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate          # Windows: .venv\Scripts\activate
 pip install -r requirements.txt
-cp .env.example .env               # then fill in GEMINI_API_KEY, SECRET_KEY, ADMIN_EMAIL, ADMIN_PASSWORD
+cp .env.example .env               # then fill in DATABASE_URL, GEMINI_API_KEY, SECRET_KEY, ADMIN_EMAIL, ADMIN_PASSWORD
 ```
+
+**Database (PostgreSQL).** Create an empty database and put its URL in `.env`:
+
+```bash
+createdb claim_settlement          # macOS Homebrew: brew install postgresql@16 && brew services start postgresql@16
+# .env: DATABASE_URL=postgresql+psycopg://USER:PASSWORD@localhost:5432/claim_settlement
+#       (local Homebrew Postgres: postgresql+psycopg://$(whoami)@localhost:5432/claim_settlement, no password)
+```
+
+Or with Docker: `docker run -d --name claims-db -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=claim_settlement -p 5432:5432 postgres:16` and keep the `.env.example` URL. A hosted database (Neon, Supabase, Render) works the same way: paste its connection string, with the `postgresql+psycopg://` prefix.
 
 Don't copy `.venv` between machines; recreate it.
 
@@ -689,7 +716,7 @@ API at http://localhost:8000. Interactive docs (try every endpoint in the browse
 source .venv/bin/activate && uvicorn app.main:app --reload
 ```
 
-On first start the app creates `claims.db` (SQLite), the `uploads/` folder, the admin account from `.env`, and a default plan ("Standard Health").
+On first start the app creates the tables in the PostgreSQL database, the `uploads/` folder, the admin account from `.env`, and a default plan ("Standard Health", INR).
 
 Frontend:
 
@@ -712,7 +739,7 @@ No network needed: Gemini is mocked. Covers the settlement math, the evidence gu
 | Login | `POST /auth/register`, `POST /auth/login` → token, `GET /auth/me`, `GET /policies` (mine) |
 | Claims (claimant) | `POST /claims`, `GET /claims`, `GET/PATCH /claims/{id}`, `POST /claims/{id}/documents` (image/PDF upload), `GET /claims/{id}/documents/{doc}/file`, `DELETE /claims/{id}/documents/{doc}`, `POST /claims/{id}/submit` |
 | Admin | `GET/POST /admin/users`, `GET/POST /admin/plans`, `GET/PUT /admin/plans/{id}` (settlement rules), `GET/POST /admin/policies`, `GET /admin/claims?status=submitted`, `GET /admin/claims/{id}`, `GET /admin/claims/{id}/calculation`, `POST /admin/claims/{id}/approve`, `POST /admin/claims/{id}/reject` |
-| Analysis (admin) | `POST /analyze` (no database: form + document texts in, ClaimAnalysis out), `POST /admin/claims/{id}/analyze` (re-run and save), `GET /admin/claims/{id}/analysis` |
+| Analysis (admin) | `POST /analyze` (no database: form + document texts in, ClaimAnalysis out), `GET /analyze/examples` (the 24 test cases as ready-to-send requests, for the demo page), `POST /admin/claims/{id}/analyze` (re-run and save), `GET /admin/claims/{id}/analysis` |
 | Money (admin) | `GET /admin/payments?status=pending`, `GET /admin/payments/summary`, `POST /admin/payments/{id}/mark-paid` |
 
 Claim flow: `draft` → `submitted` → `approved` (creates a pending payment) or `rejected` → `paid`.
@@ -730,4 +757,8 @@ Uploading a document extracts its text straight away (PDF text or OCR). Submitti
 
 Changing settlement rules: `PUT /admin/plans/1` with the full plan (deductible, annual limit, required documents, coverage rules). Approved claims keep the calculation saved at approval.
 
-No migrations yet: tables are created on startup. If a model changes, delete `claims.db` during development. **After pulling the intake-analysis changes, delete `claims.db` once**: `claims.analysis` and the document text columns are new.
+No migrations yet: missing tables are created on startup, but existing tables are not altered. If a model changes during development, reset the database (**deletes all data**):
+
+```bash
+python -m app.reset_db --yes       # drop + recreate all tables, re-seed admin and default plan
+```

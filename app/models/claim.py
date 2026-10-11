@@ -50,6 +50,14 @@ class Claim(Base):
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow)
     updated_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), default=utcnow, onupdate=utcnow)
 
+    @property
+    def triage_category(self) -> str | None:
+        """The stored analysis' recommended triage (system_inferred), for list views."""
+        try:
+            return self.analysis["recommendations"]["triage_category"]["value"]  # type: ignore[index]
+        except (TypeError, KeyError):
+            return None
+
     user: Mapped["User"] = relationship(foreign_keys=[user_id])
     policy: Mapped["Policy"] = relationship()
     items: Mapped[list["ClaimItem"]] = relationship(back_populates="claim", cascade="all, delete-orphan")
