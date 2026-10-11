@@ -88,11 +88,15 @@ def build_prompt(template: str, name: str, doc_type: str, text: str) -> str:
 # ---- Gemini call (with cache and retry) ----
 
 
+GEMINI_TIMEOUT_MS = 90_000  # one document; a hung connection must not block a submission forever
+
+
 @cache
 def _client():
     from google import genai
+    from google.genai import types
 
-    return genai.Client(api_key=settings.gemini_api_key)
+    return genai.Client(api_key=settings.gemini_api_key, http_options=types.HttpOptions(timeout=GEMINI_TIMEOUT_MS))
 
 
 def _retry_delay(message: str, attempt: int) -> float:
@@ -101,7 +105,8 @@ def _retry_delay(message: str, attempt: int) -> float:
 
 
 def call_gemini(prompt: str, max_attempts: int = 6) -> str:
-    """Send one prompt and return the raw JSON text. Retries on rate limits and server errors."""
+    """Send one prompt and return the raw JSON text. Retries on rate limits, server errors and dropped connections."""
+    import httpx
     from google.genai import errors, types
 
     key = hashlib.sha256(f"{settings.gemini_model}\n{prompt}".encode()).hexdigest()
@@ -131,6 +136,13 @@ def call_gemini(prompt: str, max_attempts: int = 6) -> str:
                 time.sleep(delay)
                 continue
             raise ExtractionError(f"Gemini error {exc.code}: {message[:300]}") from exc
+        except httpx.TransportError as exc:  # dropped connection, timeout, DNS: the request never got an answer
+            if attempt < max_attempts - 1:
+                delay = min(5 * 2**attempt, 60)
+                log.warning("Gemini connection problem (%s), retrying in %.0fs (attempt %d)", type(exc).__name__, delay, attempt + 1)
+                time.sleep(delay)
+                continue
+            raise ExtractionError(f"Could not reach Gemini: {type(exc).__name__}: {exc}") from exc
 
     if cached:
         cached.parent.mkdir(parents=True, exist_ok=True)
@@ -232,5 +244,9 @@ def extract_document(name: str, doc_type: SourceType, text: str, prompt_version:
     except (ExtractionError, ValidationError, ValueError) as exc:
         log.error("AI extraction failed for %r: %s", name, exc)
         result.error = str(exc)[:500]
+        return result
+    except Exception as exc:  # anything unexpected from the SDK: report it on this document, never break the claim
+        log.exception("Unexpected AI extraction failure for %r", name)
+        result.error = f"Unexpected error while reading the document: {type(exc).__name__}"
         return result
     return apply_guard(output, text, result)

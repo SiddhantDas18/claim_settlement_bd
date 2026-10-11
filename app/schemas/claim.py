@@ -22,6 +22,9 @@ class ClaimItemOut(ClaimItemIn):
 class ClaimCreate(BaseModel):
     policy_id: int
     invoice_number: str | None = Field(default=None, max_length=100)
+    hospital_name: str | None = Field(default=None, max_length=255)
+    # Total being claimed. Only used when no expense items are given (then the bill's lines are used for settlement).
+    claimed_amount: Money | None = Field(default=None, ge=0, max_digits=12, decimal_places=2)
     treatment_start: date | None = None
     treatment_end: date | None = None
     description: str | None = None
@@ -32,6 +35,8 @@ class ClaimUpdate(BaseModel):
     """Only the fields sent are changed. Sending `items` replaces the whole list."""
 
     invoice_number: str | None = Field(default=None, max_length=100)
+    hospital_name: str | None = Field(default=None, max_length=255)
+    claimed_amount: Money | None = Field(default=None, ge=0, max_digits=12, decimal_places=2)
     treatment_start: date | None = None
     treatment_end: date | None = None
     description: str | None = None
@@ -61,11 +66,13 @@ class ClaimOut(BaseModel):
     policy_id: int
     status: str
     invoice_number: str | None
+    hospital_name: str | None
     treatment_start: date | None
     treatment_end: date | None
     description: str | None
     claimed_amount: Money
     triage_category: str | None  # from the stored analysis; system_inferred
+    triage_reason: str | None
     approved_amount: Money | None
     admin_note: str | None
     submitted_at: datetime | None
@@ -87,6 +94,8 @@ class CalculationLine(BaseModel):
 
 class CalculationOut(BaseModel):
     currency: str
+    # "claimant": expense items typed by the claimant; "bill": line items the AI read from the bill (system_inferred categories)
+    items_source: str
     lines: list[CalculationLine]
     total_claimed: Money
     total_covered: Money
