@@ -1,0 +1,28 @@
+{
+  "document_type": "lab_report",
+  "patient_name": {
+    "value": "Sunita Yadav",
+    "evidence": "Patient Name: Sunita Yadav"
+  },
+  "hospital_name": {
+    "value": "Gomti Lifeline Clinic",
+    "evidence": "Gomti Lifeline Clinic - Department of Laboratory Medicine"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": null,
+    "evidence": null
+  },
+  "discharge_date": {
+    "value": null,
+    "evidence": null
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

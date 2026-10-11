@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Sanjay Chauhan",
+    "evidence": "Patient: Sanjay Chauhan"
+  },
+  "hospital_name": {
+    "value": "Lakeview Multispeciality Hospital",
+    "evidence": "Lakeview Multispeciality Hospital"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "8th June, 2026",
+    "evidence": "Date of Admission: 8th June, 2026"
+  },
+  "discharge_date": {
+    "value": "11th June, 2026",
+    "evidence": "Date of Discharge: 11th June, 2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

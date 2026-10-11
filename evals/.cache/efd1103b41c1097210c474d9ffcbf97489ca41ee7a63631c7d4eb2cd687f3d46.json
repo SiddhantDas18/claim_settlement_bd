@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Rekha Deshmukh",
+    "evidence": "Patient: Rekha Deshmukh"
+  },
+  "hospital_name": {
+    "value": "Orange City Medical Centre",
+    "evidence": "Orange City Medical Centre"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "10th August, 2026",
+    "evidence": "Date of Admission: 10th August, 2026"
+  },
+  "discharge_date": {
+    "value": "13th August, 2026",
+    "evidence": "Date of Discharge: 13th August, 2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

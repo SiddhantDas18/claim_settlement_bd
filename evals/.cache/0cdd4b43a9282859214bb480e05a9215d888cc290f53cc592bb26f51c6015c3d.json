@@ -1,0 +1,59 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "SHRI RAMESH KUMAR PATIL",
+    "evidence": "NAME OF PATIENT : SHRI RAMESH KUMAR PATIL"
+  },
+  "hospital_name": {
+    "value": "PERIYAR RIVERSIDE HOSPITAL",
+    "evidence": "PERIYAR RIVERSIDE HOSPITAL"
+  },
+  "invoice_number": {
+    "value": "PRH-B-26-5530",
+    "evidence": "BILL NO : PRH-B-26-5530"
+  },
+  "admission_date": {
+    "value": "09-MAR-2026",
+    "evidence": "DATE OF ADMISSION : 09-MAR-2026"
+  },
+  "discharge_date": {
+    "value": "12-MAR-2026",
+    "evidence": "DATE OF DISCHARGE : 12-MAR-2026"
+  },
+  "total_amount": {
+    "value": "67,300.00",
+    "evidence": "NET TOTAL                                   67,300.00"
+  },
+  "line_items": [
+    {
+      "description": "BED CHARGE 3 DAYS",
+      "category": "room",
+      "amount": "7,500.00",
+      "evidence": "BED CHARGE 3 DAYS                           7,500.00"
+    },
+    {
+      "description": "ORIF SURGERY PACKAGE",
+      "category": "surgery",
+      "amount": "38,000.00",
+      "evidence": "ORIF SURGERY PACKAGE                        38,000.00"
+    },
+    {
+      "description": "IMPLANT (PLATE & SCREWS)",
+      "category": "other",
+      "amount": "16,500.00",
+      "evidence": "IMPLANT (PLATE & SCREWS)                    16,500.00"
+    },
+    {
+      "description": "X-RAY FOREARM 2 VIEWS",
+      "category": "diagnostics",
+      "amount": "1,100.00",
+      "evidence": "X-RAY FOREARM 2 VIEWS                       1,100.00"
+    },
+    {
+      "description": "MEDICINE",
+      "category": "medicine",
+      "amount": "4,200.00",
+      "evidence": "MEDICINE                                    4,200.00"
+    }
+  ]
+}

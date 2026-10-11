@@ -1,0 +1,48 @@
+{
+  "id": "case_20",
+  "category": "contradictory",
+  "description": "Bill says discharged 18 July; discharge certificate says 17 July.",
+  "policy": {
+    "policy_number": "POL-26-0020",
+    "holder_name": "Divya Saxena",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Divya Saxena",
+    "policy_number": "POL-26-0020",
+    "total_amount": 19500
+  },
+  "sources": [
+    {
+      "name": "Hospital bill",
+      "type": "hospital_bill",
+      "text": "SABARMATI TRUST HOSPITAL   AHMEDABAD 380009\nBILL NO : STH/IP/0714/26     DATE : 18-JUL-2026\nNAME OF PATIENT : DIVYA SAXENA    AGE : 30 Y    SEX : FEMALE\nDATE OF ADMISSION : 14-JUL-2026    DATE OF DISCHARGE : 18-JUL-2026\nPARTICULARS                                 AMOUNT\nCABIN 4 DAYS                                8,800.00\nMEDICINE                                    5,400.00\nCBC, CRP, BLOOD C/S                         2,900.00\nDOCTOR FEE                                  2,400.00\nNET TOTAL                                   19,500.00\nRECEIVED BY : ACCOUNTS SECTION"
+    },
+    {
+      "name": "Discharge certificate",
+      "type": "discharge_summary",
+      "text": "SABARMATI TRUST HOSPITAL - Department of Medicine\nDISCHARGE CERTIFICATE\n\nThis is to certify that Divya Saxena, 30 years, female, was admitted to this hospital on 14th July, 2026 and discharged on 17th July, 2026.\nDiagnosis: Acute pyelonephritis.\nTreatment given: IV antibiotics, analgesics.\nShe is advised rest for 10 days and review in the outpatient department.\n\nSigned: Dr. Kavita Banerjee\nRegistration No. STH-1012"
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Divya Saxena",
+      "hospital_name": "Sabarmati Trust Hospital",
+      "invoice_number": "STH/IP/0714/26",
+      "admission_date": "2026-07-14",
+      "total_amount": 19500,
+      "line_items": [
+        8800,
+        5400,
+        2900,
+        2400
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [
+      "discharge_date"
+    ],
+    "triage_category": "conflicting_information"
+  }
+}

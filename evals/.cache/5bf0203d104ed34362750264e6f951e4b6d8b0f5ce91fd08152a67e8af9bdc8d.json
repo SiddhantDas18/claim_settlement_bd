@@ -1,0 +1,28 @@
+{
+  "document_type": "other",
+  "patient_name": {
+    "value": "Sneha Rao",
+    "evidence": "Sneha Rao"
+  },
+  "hospital_name": {
+    "value": "Dwarka Crescent Hospital",
+    "evidence": "Dwarka Crescent Hospital"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "11th July, 2026",
+    "evidence": "11th July, 2026"
+  },
+  "discharge_date": {
+    "value": "13th July, 2026",
+    "evidence": "13th July, 2026"
+  },
+  "total_amount": {
+    "value": "11,200.00",
+    "evidence": "Rs. 11,200.00"
+  },
+  "line_items": []
+}

@@ -1,0 +1,59 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "Mohan Das",
+    "evidence": "Received with thanks from: Mohan Das (Patient ID MC-31877)"
+  },
+  "hospital_name": {
+    "value": "Marina City Medical Centre",
+    "evidence": "Marina City Medical Centre"
+  },
+  "invoice_number": {
+    "value": "MCMC/26/0705-042",
+    "evidence": "Memo No. MCMC/26/0705-042"
+  },
+  "admission_date": {
+    "value": "05 Jul 2026",
+    "evidence": "Admitted: 05 Jul 2026"
+  },
+  "discharge_date": {
+    "value": "09 Jul 2026",
+    "evidence": "Released: 09 Jul 2026"
+  },
+  "total_amount": {
+    "value": "43,300.00",
+    "evidence": "Grand Total ........ ₹ 43,300.00/-"
+  },
+  "line_items": [
+    {
+      "description": "CCU bed (2 days)",
+      "category": "room",
+      "amount": "12,000.00",
+      "evidence": "- CCU bed (2 days) ........ ₹ 12,000.00/-"
+    },
+    {
+      "description": "Cabin (2 days)",
+      "category": "room",
+      "amount": "7,000.00",
+      "evidence": "- Cabin (2 days) ........ ₹ 7,000.00/-"
+    },
+    {
+      "description": "ECG, Troponin I, Echo",
+      "category": "diagnostics",
+      "amount": "8,400.00",
+      "evidence": "- ECG, Troponin I, Echo ........ ₹ 8,400.00/-"
+    },
+    {
+      "description": "Medicines",
+      "category": "medicine",
+      "amount": "9,900.00",
+      "evidence": "- Medicines ........ ₹ 9,900.00/-"
+    },
+    {
+      "description": "Cardiologist visit (4 visits)",
+      "category": "consultation",
+      "amount": "6,000.00",
+      "evidence": "- Cardiologist visit (4 visits) ........ ₹ 6,000.00/-"
+    }
+  ]
+}

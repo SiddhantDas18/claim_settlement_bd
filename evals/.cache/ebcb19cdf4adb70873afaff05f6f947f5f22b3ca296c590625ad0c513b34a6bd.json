@@ -1,0 +1,47 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "POOJA BHATT",
+    "evidence": "NAME OF PATIENT : POOJA BHATT"
+  },
+  "hospital_name": {
+    "value": "BRAHMAPUTRA GREEN VIEW HOSPITAL",
+    "evidence": "BRAHMAPUTRA GREEN VIEW HOSPITAL"
+  },
+  "invoice_number": {
+    "value": "BGV/MR/26/2875",
+    "evidence": "BILL NO : BGV/MR/26/2875"
+  },
+  "admission_date": {
+    "value": "28-MAY-2026",
+    "evidence": "DATE OF ADMISSION : 28-MAY-2026"
+  },
+  "discharge_date": {
+    "value": "30-MAY-2026",
+    "evidence": "DATE OF DISCHARGE : 30-MAY-2026"
+  },
+  "total_amount": {
+    "value": "9,700.00",
+    "evidence": "NET TOTAL                                   9,700.00"
+  },
+  "line_items": [
+    {
+      "description": "BED CHARGE 2 DAYS",
+      "category": "room",
+      "amount": "5,600.00",
+      "evidence": "BED CHARGE 2 DAYS                           5,600.00"
+    },
+    {
+      "description": "MEDICINE & SALINE",
+      "category": "medicine",
+      "amount": "2,750.00",
+      "evidence": "MEDICINE & SALINE                           2,750.00"
+    },
+    {
+      "description": "CBC, MP, WIDAL",
+      "category": "diagnostics",
+      "amount": "1,350.00",
+      "evidence": "CBC, MP, WIDAL                              1,350.00"
+    }
+  ]
+}

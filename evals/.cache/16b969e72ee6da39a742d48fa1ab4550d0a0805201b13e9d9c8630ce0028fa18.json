@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Lakshmi Pillai",
+    "evidence": "Patient: Lakshmi Pillai"
+  },
+  "hospital_name": {
+    "value": "Sabarmati Trust Hospital",
+    "evidence": "Sabarmati Trust Hospital"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "18th January, 2026",
+    "evidence": "Date of Admission: 18th January, 2026"
+  },
+  "discharge_date": {
+    "value": "21st January, 2026",
+    "evidence": "Date of Discharge: 21st January, 2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

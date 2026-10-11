@@ -1,0 +1,53 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "Sneha Rao",
+    "evidence": "Patient Name: Sneha Rao"
+  },
+  "hospital_name": {
+    "value": "DWARKA CRESCENT HOSPITAL",
+    "evidence": "DWARKA CRESCENT HOSPITAL"
+  },
+  "invoice_number": {
+    "value": "DCH/IPD/26/1033",
+    "evidence": "Invoice No: DCH/IPD/26/1033"
+  },
+  "admission_date": {
+    "value": "11/07/2026",
+    "evidence": "Admission Date: 11/07/2026"
+  },
+  "discharge_date": {
+    "value": "13/07/2026",
+    "evidence": "Discharge Date: 13/07/2026"
+  },
+  "total_amount": {
+    "value": "11,200.00",
+    "evidence": "Total Amount (Rs.): 11,200.00"
+  },
+  "line_items": [
+    {
+      "description": "General bed",
+      "category": "room",
+      "amount": "5,000.00",
+      "evidence": "1   General bed                           2 days    5,000.00"
+    },
+    {
+      "description": "Medicines",
+      "category": "medicine",
+      "amount": "2,400.00",
+      "evidence": "2   Medicines                                       2,400.00"
+    },
+    {
+      "description": "Ultrasound, CBC",
+      "category": "diagnostics",
+      "amount": "2,200.00",
+      "evidence": "3   Ultrasound, CBC                                 2,200.00"
+    },
+    {
+      "description": "Consultation",
+      "category": "consultation",
+      "amount": "1,600.00",
+      "evidence": "4   Consultation                          2 visits  1,600.00"
+    }
+  ]
+}

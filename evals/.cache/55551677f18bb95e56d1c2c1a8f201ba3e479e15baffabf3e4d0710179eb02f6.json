@@ -1,0 +1,53 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "Imran Qureshi",
+    "evidence": "Received with thanks from: Imran Qureshi"
+  },
+  "hospital_name": {
+    "value": "Pink City Valley Hospital",
+    "evidence": "Pink City Valley Hospital"
+  },
+  "invoice_number": {
+    "value": "PCV/2026/09/2560",
+    "evidence": "Memo No. PCV/2026/09/2560"
+  },
+  "admission_date": {
+    "value": "13 Sep 2026",
+    "evidence": "Admitted: 13 Sep 2026"
+  },
+  "discharge_date": {
+    "value": "16 Sep 2026",
+    "evidence": "Released: 16 Sep 2026"
+  },
+  "total_amount": {
+    "value": "12,100.00",
+    "evidence": "Grand Total ........ ₹ 12,100.00/-"
+  },
+  "line_items": [
+    {
+      "description": "Bed (Male ward) (3 days)",
+      "category": "room",
+      "amount": "4,500.00",
+      "evidence": "- Bed (Male ward) (3 days) ........ ₹ 4,500.00/-"
+    },
+    {
+      "description": "Medicines",
+      "category": "medicine",
+      "amount": "3,700.00",
+      "evidence": "- Medicines ........ ₹ 3,700.00/-"
+    },
+    {
+      "description": "CBC, NS1, SGPT",
+      "category": "diagnostics",
+      "amount": "1,650.00",
+      "evidence": "- CBC, NS1, SGPT ........ ₹ 1,650.00/-"
+    },
+    {
+      "description": "Doctor visit (3 visits)",
+      "category": "consultation",
+      "amount": "2,250.00",
+      "evidence": "- Doctor visit (3 visits) ........ ₹ 2,250.00/-"
+    }
+  ]
+}

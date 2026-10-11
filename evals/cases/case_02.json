@@ -1,0 +1,52 @@
+{
+  "id": "case_02",
+  "category": "clean",
+  "description": "Dengue. Receipt-style bill + discharge summary + prescription. Form only has name, policy and total.",
+  "policy": {
+    "policy_number": "POL-26-0002",
+    "holder_name": "Priya Nair",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Priya Nair",
+    "policy_number": "POL-26-0002",
+    "total_amount": 21620
+  },
+  "sources": [
+    {
+      "name": "Money receipt",
+      "type": "hospital_bill",
+      "text": "Lakeview Multispeciality Hospital\n80 Feet Road, Indiranagar, Bengaluru 560038\nMONEY RECEIPT / CASH MEMO\nMemo No. LMH-INV-778341\nDate: 06 Aug 2026\nReceived with thanks from: Priya Nair (Patient ID LMH-55321)\nAdmitted: 03 Aug 2026    Released: 06 Aug 2026\nDescription of charges:\n  - Cabin rent (3 days) ........ ₹ 10,500.00/-\n  - Medicines ........ ₹ 5,320.00/-\n  - Platelet count x4, Dengue NS1 ........ ₹ 2,800.00/-\n  - Doctor visit (3 visits) ........ ₹ 3,000.00/-\nGrand Total ........ ₹ 21,620.00/-\n\nAuthorised signature: ____________\nThank you for choosing Lakeview Multispeciality Hospital"
+    },
+    {
+      "name": "Discharge summary",
+      "type": "discharge_summary",
+      "text": "Lakeview Multispeciality Hospital\n80 Feet Road, Indiranagar, Bengaluru 560038\nDISCHARGE SUMMARY\n\nPatient: Mrs. Priya Nair    Age/Sex: 34/F    Hospital ID: LMH-55321\nConsultant: Dr. Shalini Rao (Internal Medicine)\nDate of Admission: 3rd August, 2026\nDate of Discharge: 6th August, 2026\nDiagnosis: Dengue fever (NS1 positive) with thrombocytopenia\nCourse in hospital: Managed with IV fluids and paracetamol. Platelet count monitored daily; lowest 48,000/cumm, recovered to 1,10,000/cumm.\nCondition at discharge: Stable, afebrile, taking oral diet.\nAdvice on discharge: Continue medicines as prescribed. Plenty of oral fluids. Avoid heavy work for 2 weeks.\nFollow-up: OPD after 7 days with reports."
+    },
+    {
+      "name": "Prescription",
+      "type": "prescription",
+      "text": "Lakeview Multispeciality Hospital - Discharge Prescription\nDate: 06/08/2026\nPt: Priya Nair    Age: 34 yrs\nRx\n1. Tab. Paracetamol 500 mg 1+1+1 x 5 days\n2. ORS 1 sachet after each loose motion\n3. Tab. Famotidine 20 mg 1+0+1 x 7 days\n\nDr. Shalini Rao\nInternal Medicine"
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Priya Nair",
+      "hospital_name": "Lakeview Multispeciality Hospital",
+      "invoice_number": "LMH-INV-778341",
+      "admission_date": "2026-08-03",
+      "discharge_date": "2026-08-06",
+      "total_amount": 21620,
+      "line_items": [
+        10500,
+        5320,
+        2800,
+        3000
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "ready_for_review"
+  }
+}

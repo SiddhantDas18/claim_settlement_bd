@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Divya Saxena",
+    "evidence": "This is to certify that Divya Saxena"
+  },
+  "hospital_name": {
+    "value": "SABARMATI TRUST HOSPITAL",
+    "evidence": "SABARMATI TRUST HOSPITAL"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "14th July, 2026",
+    "evidence": "was admitted to this hospital on 14th July, 2026"
+  },
+  "discharge_date": {
+    "value": "17th July, 2026",
+    "evidence": "and discharged on 17th July, 2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

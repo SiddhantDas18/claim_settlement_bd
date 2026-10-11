@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Prakash Iyengar",
+    "evidence": "Patient: Prakash Iyengar"
+  },
+  "hospital_name": {
+    "value": "Dwarka Crescent Hospital",
+    "evidence": "Dwarka Crescent Hospital"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "4th September, 2026",
+    "evidence": "Date of Admission: 4th September, 2026"
+  },
+  "discharge_date": {
+    "value": "7th September, 2026",
+    "evidence": "Date of Discharge: 7th September, 2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

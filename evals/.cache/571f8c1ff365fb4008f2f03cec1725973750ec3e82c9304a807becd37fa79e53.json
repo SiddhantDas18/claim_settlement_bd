@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Sunita Yadav",
+    "evidence": "Sunita Yadav"
+  },
+  "hospital_name": {
+    "value": "GOMTI LIFELINE CLINIC",
+    "evidence": "GOMTI LIFELINE CLINIC"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "07-Apr-2026",
+    "evidence": "07-Apr-2026"
+  },
+  "discharge_date": {
+    "value": "10-Apr-2026",
+    "evidence": "10-Apr-2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

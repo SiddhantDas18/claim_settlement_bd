@@ -1,0 +1,50 @@
+{
+  "id": "case_01",
+  "category": "clean",
+  "description": "Dengue admission. Bill (digital PDF) + discharge summary, form fully filled.",
+  "policy": {
+    "policy_number": "POL-26-0001",
+    "holder_name": "Rahul Sharma",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Rahul Sharma",
+    "policy_number": "POL-26-0001",
+    "hospital_name": "Sahyadri Care Hospital Pvt. Ltd.",
+    "admission_date": "2026-09-12",
+    "discharge_date": "2026-09-15",
+    "total_amount": 16450
+  },
+  "sources": [
+    {
+      "name": "Hospital bill",
+      "type": "hospital_bill",
+      "file": "files/case_01_hospital_bill.pdf"
+    },
+    {
+      "name": "Discharge summary",
+      "type": "discharge_summary",
+      "text": "Sahyadri Care Hospital Pvt. Ltd.\nSurvey No. 12, Karve Road, Kothrud, Pune 411038\nDISCHARGE SUMMARY\n\nPatient: Mr. Rahul Sharma    Age/Sex: 42/M    Hospital ID: 2026-088123\nConsultant: Dr. A. K. Mehta (Medicine)\nDate of Admission: 12th September, 2026\nDate of Discharge: 15th September, 2026\nDiagnosis: Dengue fever (NS1 positive) with thrombocytopenia\nCourse in hospital: Managed with IV fluids and paracetamol. Platelet count monitored daily; lowest 48,000/cumm, recovered to 1,10,000/cumm.\nCondition at discharge: Stable, afebrile, taking oral diet.\nAdvice on discharge: Continue medicines as prescribed. Plenty of oral fluids. Avoid heavy work for 2 weeks.\nFollow-up: OPD after 7 days with reports."
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Rahul Sharma",
+      "hospital_name": "Sahyadri Care Hospital Pvt. Ltd.",
+      "invoice_number": "SCH/IPD/2026/04512",
+      "admission_date": "2026-09-12",
+      "discharge_date": "2026-09-15",
+      "total_amount": 16450,
+      "line_items": [
+        9000,
+        4250,
+        1200,
+        2000
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "ready_for_review"
+  }
+}

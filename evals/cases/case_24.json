@@ -1,0 +1,66 @@
+{
+  "id": "case_24",
+  "category": "tricky",
+  "description": "Two separate bills for one stay (hospital bill + pharmacy bill, different invoice numbers). Form claims the sum.",
+  "policy": {
+    "policy_number": "POL-26-0024",
+    "holder_name": "Prakash Iyengar",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Prakash Iyengar",
+    "policy_number": "POL-26-0024",
+    "hospital_name": "Dwarka Crescent Hospital",
+    "admission_date": "2026-09-04",
+    "discharge_date": "2026-09-07",
+    "total_amount": 37980
+  },
+  "sources": [
+    {
+      "name": "Hospital bill",
+      "type": "hospital_bill",
+      "text": "DWARKA CRESCENT HOSPITAL\nSector 7, Dwarka, New Delhi 110075 | Phone: 011-45512288\nIN-PATIENT FINAL BILL\n\nInvoice No: DCH/IPD/26/1187        Bill Date: 07/09/2026\nPatient Name: Prakash Iyengar        Reg. No: DCH-41388\nAdmission Date: 04/09/2026        Discharge Date: 07/09/2026\nConsultant: Dr. Ashok Alva\n----------------------------------------------------------------\nSL  Particulars                           Qty       Amount (Rs.)\n1   General bed                           3 days    7,500.00\n2   Surgeon fee (TURP)                              18,000.00\n3   Anaesthesia                                     4,000.00\n4   Consultation                          2 visits  1,700.00\n----------------------------------------------------------------\n                                 Total Amount (Rs.): 31,200.00\nIn words: Rupees Thirty One Thousand Two Hundred Only\nPaid: 31,200.00    Due: 0.00\nCashier: R. Mondal    This is a computer generated bill."
+    },
+    {
+      "name": "Pharmacy bill",
+      "type": "hospital_bill",
+      "text": "Dwarka Crescent Hospital\nSector 7, Dwarka, New Delhi 110075\nMONEY RECEIPT / CASH MEMO\nMemo No. DCH/PH/26/55023\nDate: 07 Sep 2026\nReceived with thanks from: Prakash Iyengar (Patient ID DCH-41388)\nAdmitted: 04 Sep 2026    Released: 07 Sep 2026\nDescription of charges:\n  - Medicines (in-patient pharmacy) ........ ₹ 5,280.00/-\n  - Catheter & consumables ........ ₹ 1,500.00/-\nGrand Total ........ ₹ 6,780.00/-\n\nAuthorised signature: ____________\nThank you for choosing Dwarka Crescent Hospital"
+    },
+    {
+      "name": "Discharge summary",
+      "type": "discharge_summary",
+      "text": "Dwarka Crescent Hospital\nSector 7, Dwarka, New Delhi 110075\nDISCHARGE SUMMARY\n\nPatient: Prakash Iyengar    Age/Sex: 52/M    Hospital ID: DCH-41388\nConsultant: Dr. Ashok Alva (Urology)\nDate of Admission: 4th September, 2026\nDate of Discharge: 7th September, 2026\nDiagnosis: Benign prostatic hyperplasia\nCourse in hospital: TURP done on 05/09/2026.\nCondition at discharge: Stable, afebrile, taking oral diet.\nAdvice on discharge: Continue medicines as prescribed. Plenty of oral fluids. Avoid heavy work for 2 weeks.\nFollow-up: OPD after 7 days with reports."
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Prakash Iyengar",
+      "hospital_name": "Dwarka Crescent Hospital",
+      "invoice_number": [
+        "DCH/IPD/26/1187",
+        "DCH/PH/26/55023"
+      ],
+      "admission_date": "2026-09-04",
+      "discharge_date": "2026-09-07",
+      "total_amount": [
+        31200,
+        6780
+      ],
+      "line_items": [
+        7500,
+        18000,
+        4000,
+        1700,
+        5280,
+        1500
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "possible_issue",
+    "flags": [
+      "multiple_bills"
+    ]
+  }
+}

@@ -1,0 +1,51 @@
+{
+  "id": "case_12",
+  "category": "clean",
+  "description": "Hernia repair. Table bill (no consultation line) + discharge summary.",
+  "policy": {
+    "policy_number": "POL-26-0012",
+    "holder_name": "Meera Kulkarni",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Meera Kulkarni",
+    "policy_number": "POL-26-0012",
+    "hospital_name": "Lakeview Multispeciality Hospital",
+    "admission_date": "2026-09-01",
+    "discharge_date": "2026-09-03",
+    "total_amount": 59850,
+    "invoice_number": "LMH-INV-781102"
+  },
+  "sources": [
+    {
+      "name": "Final bill",
+      "type": "hospital_bill",
+      "text": "LAKEVIEW MULTISPECIALITY HOSPITAL\n80 Feet Road, Indiranagar, Bengaluru 560038 | Phone: 080-41226600\nIN-PATIENT FINAL BILL\n\nInvoice No: LMH-INV-781102        Bill Date: 03/09/2026\nPatient Name: Meera Kulkarni        Reg. No: LMH-56650\nAdmission Date: 01/09/2026        Discharge Date: 03/09/2026\nConsultant: Dr. Tarun Mathur\n----------------------------------------------------------------\nSL  Particulars                           Qty       Amount (Rs.)\n1   Cabin rent                            2 days    7,000.00\n2   Hernia repair (mesh)                            42,000.00\n3   Anaesthesia                                     7,000.00\n4   Medicines                                       3,850.00\n----------------------------------------------------------------\n                                 Total Amount (Rs.): 59,850.00\nIn words: Rupees Fifty Nine Thousand Eight Hundred Fifty Only\nPaid: 59,850.00    Due: 0.00\nCashier: R. Mondal    This is a computer generated bill."
+    },
+    {
+      "name": "Discharge summary",
+      "type": "discharge_summary",
+      "text": "Lakeview Multispeciality Hospital\n80 Feet Road, Indiranagar, Bengaluru 560038\nDISCHARGE SUMMARY\n\nPatient: Meera Kulkarni    Age/Sex: 33/F    Hospital ID: LMH-56650\nConsultant: Dr. Tarun Mathur (General Surgery)\nDate of Admission: 01/09/2026\nDate of Discharge: 03/09/2026\nDiagnosis: Paraumbilical hernia\nCourse in hospital: Open mesh repair on 01/09/2026.\nCondition at discharge: Stable, afebrile, taking oral diet.\nAdvice on discharge: Continue medicines as prescribed. Plenty of oral fluids. Avoid heavy work for 2 weeks.\nFollow-up: OPD after 7 days with reports."
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Meera Kulkarni",
+      "hospital_name": "Lakeview Multispeciality Hospital",
+      "invoice_number": "LMH-INV-781102",
+      "admission_date": "2026-09-01",
+      "discharge_date": "2026-09-03",
+      "total_amount": 59850,
+      "line_items": [
+        7000,
+        42000,
+        7000,
+        3850
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "ready_for_review"
+  }
+}

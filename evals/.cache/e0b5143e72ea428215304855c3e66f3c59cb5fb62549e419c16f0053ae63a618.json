@@ -1,0 +1,28 @@
+{
+  "document_type": "other",
+  "patient_name": {
+    "value": "Ananya Gupta",
+    "evidence": "Ananya Gupta"
+  },
+  "hospital_name": {
+    "value": "Dwarka Crescent Hospital",
+    "evidence": "Dwarka Crescent Hospital"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "2nd May, 2026",
+    "evidence": "2nd May, 2026"
+  },
+  "discharge_date": {
+    "value": "4th May, 2026",
+    "evidence": "4th May, 2026"
+  },
+  "total_amount": {
+    "value": "11,150.00",
+    "evidence": "Rs. 11,150.00"
+  },
+  "line_items": []
+}

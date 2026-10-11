@@ -1,0 +1,41 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "Prakash Iyengar",
+    "evidence": "Received with thanks from: Prakash Iyengar"
+  },
+  "hospital_name": {
+    "value": "Dwarka Crescent Hospital",
+    "evidence": "Dwarka Crescent Hospital"
+  },
+  "invoice_number": {
+    "value": "DCH/PH/26/55023",
+    "evidence": "Memo No. DCH/PH/26/55023"
+  },
+  "admission_date": {
+    "value": "04 Sep 2026",
+    "evidence": "Admitted: 04 Sep 2026"
+  },
+  "discharge_date": {
+    "value": "07 Sep 2026",
+    "evidence": "Released: 07 Sep 2026"
+  },
+  "total_amount": {
+    "value": "6,780.00",
+    "evidence": "Grand Total ........ ₹ 6,780.00/-"
+  },
+  "line_items": [
+    {
+      "description": "Medicines (in-patient pharmacy)",
+      "category": "medicine",
+      "amount": "5,280.00",
+      "evidence": "- Medicines (in-patient pharmacy) ........ ₹ 5,280.00/-"
+    },
+    {
+      "description": "Catheter & consumables",
+      "category": "other",
+      "amount": "1,500.00",
+      "evidence": "- Catheter & consumables ........ ₹ 1,500.00/-"
+    }
+  ]
+}

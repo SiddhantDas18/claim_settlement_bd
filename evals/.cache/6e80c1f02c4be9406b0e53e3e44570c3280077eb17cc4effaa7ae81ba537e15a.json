@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Rajesh Malhotra",
+    "evidence": "Rajesh Malhotra"
+  },
+  "hospital_name": {
+    "value": "PERIYAR RIVERSIDE HOSPITAL",
+    "evidence": "PERIYAR RIVERSIDE HOSPITAL"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": null,
+    "evidence": null
+  },
+  "discharge_date": {
+    "value": null,
+    "evidence": null
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

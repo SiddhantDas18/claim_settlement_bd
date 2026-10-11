@@ -1,0 +1,51 @@
+{
+  "id": "case_07",
+  "category": "clean",
+  "description": "Fracture surgery. Bill writes 'Shri Ramesh Kumar Patil', form writes 'Ramesh Patil' (same person, must not be a conflict).",
+  "policy": {
+    "policy_number": "POL-26-0007",
+    "holder_name": "Ramesh Patil",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Ramesh Patil",
+    "policy_number": "POL-26-0007",
+    "hospital_name": "Periyar Riverside Hospital",
+    "admission_date": "2026-03-09",
+    "discharge_date": "2026-03-12",
+    "total_amount": 67300
+  },
+  "sources": [
+    {
+      "name": "Hospital bill",
+      "type": "hospital_bill",
+      "text": "PERIYAR RIVERSIDE HOSPITAL   KOCHI 682016\nBILL NO : PRH-B-26-5530     DATE : 12-MAR-2026\nNAME OF PATIENT : SHRI RAMESH KUMAR PATIL    AGE : 45 Y    SEX : MALE\nDATE OF ADMISSION : 09-MAR-2026    DATE OF DISCHARGE : 12-MAR-2026\nPARTICULARS                                 AMOUNT\nBED CHARGE 3 DAYS                           7,500.00\nORIF SURGERY PACKAGE                        38,000.00\nIMPLANT (PLATE & SCREWS)                    16,500.00\nX-RAY FOREARM 2 VIEWS                       1,100.00\nMEDICINE                                    4,200.00\nNET TOTAL                                   67,300.00\nRECEIVED BY : ACCOUNTS SECTION"
+    },
+    {
+      "name": "Discharge certificate",
+      "type": "discharge_summary",
+      "text": "PERIYAR RIVERSIDE HOSPITAL - Department of Orthopaedics\nDISCHARGE CERTIFICATE\n\nThis is to certify that Shri Ramesh Kumar Patil, 45 years, male, was admitted to this hospital on 09/03/2026 and discharged on 12/03/2026.\nDiagnosis: Fracture of distal radius (right).\nTreatment given: Open reduction and internal fixation with plate on 10-03-2026.\nHe is advised rest for 10 days and review in the outpatient department.\n\nSigned: Dr. S. M. Menon\nRegistration No. PRH-6617"
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Shri Ramesh Kumar Patil",
+      "hospital_name": "Periyar Riverside Hospital",
+      "invoice_number": "PRH-B-26-5530",
+      "admission_date": "2026-03-09",
+      "discharge_date": "2026-03-12",
+      "total_amount": 67300,
+      "line_items": [
+        7500,
+        38000,
+        16500,
+        1100,
+        4200
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "ready_for_review"
+  }
+}

@@ -1,0 +1,74 @@
+{
+  "id": "case_03",
+  "category": "clean",
+  "description": "Appendicectomy. Capitals dot-matrix bill + discharge certificate, form with line items.",
+  "policy": {
+    "policy_number": "POL-26-0003",
+    "holder_name": "Arjun Reddy",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Arjun Reddy",
+    "policy_number": "POL-26-0003",
+    "hospital_name": "Marina City Medical Centre",
+    "admission_date": "2026-06-20",
+    "discharge_date": "2026-06-24",
+    "total_amount": 79950,
+    "invoice_number": "MCMC/26/0623-117",
+    "line_items": [
+      {
+        "description": "Cabin",
+        "amount": 14000,
+        "category": "room"
+      },
+      {
+        "description": "Operation",
+        "amount": 53000,
+        "category": "surgery"
+      },
+      {
+        "description": "Medicine",
+        "amount": 9350,
+        "category": "medicine"
+      },
+      {
+        "description": "Tests",
+        "amount": 3600,
+        "category": "diagnostics"
+      }
+    ]
+  },
+  "sources": [
+    {
+      "name": "Hospital bill",
+      "type": "hospital_bill",
+      "text": "MARINA CITY MEDICAL CENTRE   CHENNAI 600018\nBILL NO : MCMC/26/0623-117     DATE : 24-JUN-2026\nNAME OF PATIENT : ARJUN REDDY    AGE : 29 Y    SEX : MALE\nDATE OF ADMISSION : 20-JUN-2026    DATE OF DISCHARGE : 24-JUN-2026\nPARTICULARS                                 AMOUNT\nCABIN RENT 4 DAYS                           14,000.00\nSURGEON & OT CHARGE                         45,000.00\nANAESTHESIA                                 8,000.00\nMEDICINE                                    9,350.00\nPATHOLOGY & USG                             3,600.00\nNET TOTAL                                   79,950.00\nRECEIVED BY : ACCOUNTS SECTION"
+    },
+    {
+      "name": "Discharge certificate",
+      "type": "discharge_summary",
+      "text": "MARINA CITY MEDICAL CENTRE - Department of General Surgery\nDISCHARGE CERTIFICATE\n\nThis is to certify that Arjun Reddy, 29 years, male, was admitted to this hospital on 2026-06-20 and discharged on 2026-06-24.\nDiagnosis: Acute appendicitis.\nTreatment given: Laparoscopic appendicectomy done on 21-06-2026 under GA. Uneventful recovery.\nHe is advised rest for 10 days and review in the outpatient department.\n\nSigned: Dr. Raghav Bhat\nRegistration No. MC-30418"
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Arjun Reddy",
+      "hospital_name": "Marina City Medical Centre",
+      "invoice_number": "MCMC/26/0623-117",
+      "admission_date": "2026-06-20",
+      "discharge_date": "2026-06-24",
+      "total_amount": 79950,
+      "line_items": [
+        14000,
+        45000,
+        8000,
+        9350,
+        3600
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "ready_for_review"
+  }
+}

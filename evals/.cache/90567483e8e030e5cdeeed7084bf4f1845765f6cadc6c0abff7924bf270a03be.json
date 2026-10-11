@@ -1,0 +1,28 @@
+{
+  "document_type": "lab_report",
+  "patient_name": {
+    "value": "Suresh Patel",
+    "evidence": "Patient Name: Suresh Patel"
+  },
+  "hospital_name": {
+    "value": "Sahyadri Care Hospital Pvt. Ltd.",
+    "evidence": "Sahyadri Care Hospital Pvt. Ltd."
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": null,
+    "evidence": null
+  },
+  "discharge_date": {
+    "value": null,
+    "evidence": null
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

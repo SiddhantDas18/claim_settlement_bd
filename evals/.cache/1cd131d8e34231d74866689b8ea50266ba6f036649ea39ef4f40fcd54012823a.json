@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Imran Qureshi",
+    "evidence": "Patient: Imran Qureshi"
+  },
+  "hospital_name": {
+    "value": "Pink City Valley Hospital",
+    "evidence": "Pink City Valley Hospital"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "13th September, 2026",
+    "evidence": "Date of Admission: 13th September, 2026"
+  },
+  "discharge_date": {
+    "value": "16th September, 2026",
+    "evidence": "Date of Discharge: 16th September, 2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

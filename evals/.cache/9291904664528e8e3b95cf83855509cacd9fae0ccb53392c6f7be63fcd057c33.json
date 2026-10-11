@@ -1,0 +1,53 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "DIVYA SAXENA",
+    "evidence": "NAME OF PATIENT : DIVYA SAXENA"
+  },
+  "hospital_name": {
+    "value": "SABARMATI TRUST HOSPITAL",
+    "evidence": "SABARMATI TRUST HOSPITAL"
+  },
+  "invoice_number": {
+    "value": "STH/IP/0714/26",
+    "evidence": "BILL NO : STH/IP/0714/26"
+  },
+  "admission_date": {
+    "value": "14-JUL-2026",
+    "evidence": "DATE OF ADMISSION : 14-JUL-2026"
+  },
+  "discharge_date": {
+    "value": "18-JUL-2026",
+    "evidence": "DATE OF DISCHARGE : 18-JUL-2026"
+  },
+  "total_amount": {
+    "value": "19,500.00",
+    "evidence": "NET TOTAL                                   19,500.00"
+  },
+  "line_items": [
+    {
+      "description": "CABIN 4 DAYS",
+      "category": "room",
+      "amount": "8,800.00",
+      "evidence": "CABIN 4 DAYS                                8,800.00"
+    },
+    {
+      "description": "MEDICINE",
+      "category": "medicine",
+      "amount": "5,400.00",
+      "evidence": "MEDICINE                                    5,400.00"
+    },
+    {
+      "description": "CBC, CRP, BLOOD C/S",
+      "category": "diagnostics",
+      "amount": "2,900.00",
+      "evidence": "CBC, CRP, BLOOD C/S                         2,900.00"
+    },
+    {
+      "description": "DOCTOR FEE",
+      "category": "consultation",
+      "amount": "2,400.00",
+      "evidence": "DOCTOR FEE                                  2,400.00"
+    }
+  ]
+}

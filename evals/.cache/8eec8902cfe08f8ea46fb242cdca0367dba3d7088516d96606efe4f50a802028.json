@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Ramesh Kumar Patil",
+    "evidence": "Shri Ramesh Kumar Patil"
+  },
+  "hospital_name": {
+    "value": "PERIYAR RIVERSIDE HOSPITAL",
+    "evidence": "PERIYAR RIVERSIDE HOSPITAL"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "09/03/2026",
+    "evidence": "09/03/2026"
+  },
+  "discharge_date": {
+    "value": "12/03/2026",
+    "evidence": "12/03/2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

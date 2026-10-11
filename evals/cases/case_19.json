@@ -1,0 +1,51 @@
+{
+  "id": "case_19",
+  "category": "contradictory",
+  "description": "Claim form says admitted 12 Sept; bill and discharge summary say 13 Sept.",
+  "policy": {
+    "policy_number": "POL-26-0019",
+    "holder_name": "Imran Qureshi",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Imran Qureshi",
+    "policy_number": "POL-26-0019",
+    "hospital_name": "Pink City Valley Hospital",
+    "admission_date": "2026-09-12",
+    "discharge_date": "2026-09-16",
+    "total_amount": 12100
+  },
+  "sources": [
+    {
+      "name": "Money receipt",
+      "type": "hospital_bill",
+      "text": "Pink City Valley Hospital\nTonk Road, Jaipur 302018\nMONEY RECEIPT / CASH MEMO\nMemo No. PCV/2026/09/2560\nDate: 16 Sep 2026\nReceived with thanks from: Imran Qureshi (Patient ID PCV-2511)\nAdmitted: 13 Sep 2026    Released: 16 Sep 2026\nDescription of charges:\n  - Bed (Male ward) (3 days) ........ ₹ 4,500.00/-\n  - Medicines ........ ₹ 3,700.00/-\n  - CBC, NS1, SGPT ........ ₹ 1,650.00/-\n  - Doctor visit (3 visits) ........ ₹ 2,250.00/-\nGrand Total ........ ₹ 12,100.00/-\n\nAuthorised signature: ____________\nThank you for choosing Pink City Valley Hospital"
+    },
+    {
+      "name": "Discharge summary",
+      "type": "discharge_summary",
+      "text": "Pink City Valley Hospital\nTonk Road, Jaipur 302018\nDISCHARGE SUMMARY\n\nPatient: Imran Qureshi    Age/Sex: 36/M    Hospital ID: PCV-2511\nConsultant: Dr. Anil Thakur (Medicine)\nDate of Admission: 13th September, 2026\nDate of Discharge: 16th September, 2026\nDiagnosis: Dengue fever (NS1 positive) with thrombocytopenia\nCourse in hospital: Managed with IV fluids and paracetamol. Platelet count monitored daily; lowest 48,000/cumm, recovered to 1,10,000/cumm.\nCondition at discharge: Stable, afebrile, taking oral diet.\nAdvice on discharge: Continue medicines as prescribed. Plenty of oral fluids. Avoid heavy work for 2 weeks.\nFollow-up: OPD after 7 days with reports."
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Imran Qureshi",
+      "hospital_name": "Pink City Valley Hospital",
+      "invoice_number": "PCV/2026/09/2560",
+      "discharge_date": "2026-09-16",
+      "total_amount": 12100,
+      "line_items": [
+        4500,
+        3700,
+        1650,
+        2250
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [
+      "admission_date"
+    ],
+    "triage_category": "conflicting_information"
+  }
+}

@@ -1,0 +1,47 @@
+{
+  "document_type": "prescription",
+  "patient_name": {
+    "value": "Priya Nair",
+    "evidence": "Pt: Priya Nair"
+  },
+  "hospital_name": {
+    "value": "Lakeview Multispeciality Hospital",
+    "evidence": "Lakeview Multispeciality Hospital - Discharge Prescription"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": null,
+    "evidence": null
+  },
+  "discharge_date": {
+    "value": null,
+    "evidence": null
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": [
+    {
+      "description": "Tab. Paracetamol 500 mg 1+1+1 x 5 days",
+      "category": "medicine",
+      "amount": null,
+      "evidence": "1. Tab. Paracetamol 500 mg 1+1+1 x 5 days"
+    },
+    {
+      "description": "ORS 1 sachet after each loose motion",
+      "category": "medicine",
+      "amount": null,
+      "evidence": "2. ORS 1 sachet after each loose motion"
+    },
+    {
+      "description": "Tab. Famotidine 20 mg 1+0+1 x 7 days",
+      "category": "medicine",
+      "amount": null,
+      "evidence": "3. Tab. Famotidine 20 mg 1+0+1 x 7 days"
+    }
+  ]
+}

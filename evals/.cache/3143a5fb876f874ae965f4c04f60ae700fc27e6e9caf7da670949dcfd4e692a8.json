@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Arjun Reddy",
+    "evidence": "Arjun Reddy"
+  },
+  "hospital_name": {
+    "value": "MARINA CITY MEDICAL CENTRE",
+    "evidence": "MARINA CITY MEDICAL CENTRE"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "2026-06-20",
+    "evidence": "2026-06-20"
+  },
+  "discharge_date": {
+    "value": "2026-06-24",
+    "evidence": "2026-06-24"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

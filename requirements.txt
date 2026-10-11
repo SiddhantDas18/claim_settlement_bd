@@ -1,0 +1,24 @@
+# Web API
+fastapi>=0.115
+uvicorn[standard]>=0.30
+python-multipart>=0.0.9      # file uploads
+
+# Database + config
+sqlalchemy>=2.0
+pydantic-settings>=2.0
+
+# Login tokens
+pyjwt>=2.8
+
+# Text extraction (pip only — no system installs needed)
+pdfplumber>=0.11             # text from digital PDFs
+pypdfium2>=4.0               # render scanned PDF pages to images for OCR
+pillow>=10.0
+rapidocr>=3.0                # OCR for photos/scans; models ship inside the wheel
+onnxruntime>=1.17            # engine RapidOCR runs on
+
+# AI field extraction
+google-genai>=1.0            # Gemini API (free tier)
+
+# Tests
+httpx>=0.27                  # FastAPI TestClient

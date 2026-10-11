@@ -1,0 +1,52 @@
+{
+  "id": "case_10",
+  "category": "clean",
+  "description": "UTI. Email gives dates WITHOUT a year (the year must not be filled in by the AI).",
+  "policy": {
+    "policy_number": "POL-26-0010",
+    "holder_name": "Lakshmi Pillai",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Lakshmi Pillai",
+    "policy_number": "POL-26-0010",
+    "total_amount": 18700
+  },
+  "sources": [
+    {
+      "name": "Hospital bill",
+      "type": "hospital_bill",
+      "text": "SABARMATI TRUST HOSPITAL   AHMEDABAD 380009\nBILL NO : STH/IP/0118/26     DATE : 21-JAN-2026\nNAME OF PATIENT : LAKSHMI PILLAI    AGE : 58 Y    SEX : FEMALE\nDATE OF ADMISSION : 18-JAN-2026    DATE OF DISCHARGE : 21-JAN-2026\nPARTICULARS                                 AMOUNT\nCABIN 3 DAYS                                6,600.00\nINJ. MEROPENEM & IV FLUID                   7,800.00\nURINE C/S, CBC, CREATININE                  2,300.00\nDOCTOR FEE                                  2,000.00\nNET TOTAL                                   18,700.00\nRECEIVED BY : ACCOUNTS SECTION"
+    },
+    {
+      "name": "Discharge summary",
+      "type": "discharge_summary",
+      "text": "Sabarmati Trust Hospital\nAshram Road, Ahmedabad 380009\nDISCHARGE SUMMARY\n\nPatient: Lakshmi Pillai    Age/Sex: 58/F    Hospital ID: STH-0904\nConsultant: Dr. Kavita Banerjee (Nephrology)\nDate of Admission: 18th January, 2026\nDate of Discharge: 21st January, 2026\nDiagnosis: Complicated urinary tract infection\nCourse in hospital: IV meropenem for 3 days according to culture report.\nCondition at discharge: Stable, afebrile, taking oral diet.\nAdvice on discharge: Continue medicines as prescribed. Plenty of oral fluids. Avoid heavy work for 2 weeks.\nFollow-up: OPD after 7 days with reports."
+    },
+    {
+      "name": "Claimant email",
+      "type": "claimant_email",
+      "text": "From: lakshmi.pillai@example.com\nTo: claims@insurer.example\nSubject: Health claim - Lakshmi Pillai - POL-26-0010\n\nDear Sir/Madam,\nI am writing to claim for my treatment at Sabarmati Trust Hospital. I was admitted on 18 January and discharged on 21 January. The total hospital bill was Rs. 18,700.00. My policy number is POL-26-0010. I have attached the documents from the hospital.\nPlease let me know if anything else is needed.\n\nRegards,\nLakshmi Pillai\nMobile: +91 9687279582"
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Lakshmi Pillai",
+      "hospital_name": "Sabarmati Trust Hospital",
+      "invoice_number": "STH/IP/0118/26",
+      "admission_date": "2026-01-18",
+      "discharge_date": "2026-01-21",
+      "total_amount": 18700,
+      "line_items": [
+        6600,
+        7800,
+        2300,
+        2000
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "ready_for_review"
+  }
+}

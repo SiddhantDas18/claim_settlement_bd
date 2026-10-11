@@ -1,0 +1,53 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "Rajesh Malhotra",
+    "evidence": "Patient Name: Rajesh Malhotra"
+  },
+  "hospital_name": {
+    "value": "PERIYAR RIVERSIDE HOSPITAL",
+    "evidence": "PERIYAR RIVERSIDE HOSPITAL"
+  },
+  "invoice_number": {
+    "value": "PRH-B-26-6012",
+    "evidence": "Invoice No: PRH-B-26-6012"
+  },
+  "admission_date": {
+    "value": null,
+    "evidence": null
+  },
+  "discharge_date": {
+    "value": null,
+    "evidence": null
+  },
+  "total_amount": {
+    "value": "22,200.00",
+    "evidence": "Total Amount (Rs.): 22,200.00"
+  },
+  "line_items": [
+    {
+      "description": "Cabin",
+      "category": "room",
+      "amount": "10,000.00",
+      "evidence": "1   Cabin                                 4 days    10,000.00"
+    },
+    {
+      "description": "Medicines & insulin",
+      "category": "medicine",
+      "amount": "6,300.00",
+      "evidence": "2   Medicines & insulin                             6,300.00"
+    },
+    {
+      "description": "HbA1c, RBS chart, creatinine",
+      "category": "diagnostics",
+      "amount": "2,700.00",
+      "evidence": "3   HbA1c, RBS chart, creatinine                    2,700.00"
+    },
+    {
+      "description": "Consultant visit",
+      "category": "consultation",
+      "amount": "3,200.00",
+      "evidence": "4   Consultant visit                      4 visits  3,200.00"
+    }
+  ]
+}

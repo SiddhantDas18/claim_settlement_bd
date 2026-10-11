@@ -1,0 +1,28 @@
+{
+  "document_type": "other",
+  "patient_name": {
+    "value": "Sneha Rao",
+    "evidence": "Health claim - Sneha Rao - POL-26-0016"
+  },
+  "hospital_name": {
+    "value": "Dwarka Crescent Hospital",
+    "evidence": "I am writing to claim for my treatment at Dwarka Crescent Hospital."
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "11th July, 2026",
+    "evidence": "I was admitted on 11th July, 2026"
+  },
+  "discharge_date": {
+    "value": "13th July, 2026",
+    "evidence": "discharged on 13th July, 2026."
+  },
+  "total_amount": {
+    "value": "11,200.00",
+    "evidence": "The total hospital bill was Rs. 11,200.00."
+  },
+  "line_items": []
+}

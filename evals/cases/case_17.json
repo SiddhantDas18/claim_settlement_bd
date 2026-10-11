@@ -1,0 +1,50 @@
+{
+  "id": "case_17",
+  "category": "incomplete",
+  "description": "No admission or discharge dates anywhere (only 'Duration of stay: 4 days'); the AI must not compute dates.",
+  "policy": {
+    "policy_number": "POL-26-0017",
+    "holder_name": "Rajesh Malhotra",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Rajesh Malhotra",
+    "policy_number": "POL-26-0017",
+    "total_amount": 22200
+  },
+  "sources": [
+    {
+      "name": "Final bill",
+      "type": "hospital_bill",
+      "text": "PERIYAR RIVERSIDE HOSPITAL\nMG Road, Ernakulam, Kochi 682016 | Phone: 0484-2723311\nIN-PATIENT FINAL BILL\n\nInvoice No: PRH-B-26-6012\nPatient Name: Rajesh Malhotra        Reg. No: PRH-6702\nConsultant: Dr. S. K. Paul\n----------------------------------------------------------------\nSL  Particulars                           Qty       Amount (Rs.)\n1   Cabin                                 4 days    10,000.00\n2   Medicines & insulin                             6,300.00\n3   HbA1c, RBS chart, creatinine                    2,700.00\n4   Consultant visit                      4 visits  3,200.00\n----------------------------------------------------------------\n                                 Total Amount (Rs.): 22,200.00\nIn words: Rupees Twenty Two Thousand Two Hundred Only\nPaid: 22,200.00    Due: 0.00\nCashier: R. Mondal    This is a computer generated bill."
+    },
+    {
+      "name": "Discharge certificate",
+      "type": "discharge_summary",
+      "text": "PERIYAR RIVERSIDE HOSPITAL - Department of Endocrinology\nDISCHARGE CERTIFICATE\n\nThis is to certify that Rajesh Malhotra, 55 years, male, was admitted to this hospital under the Endocrinology unit. Duration of stay: 4 days.\nDiagnosis: Uncontrolled type 2 diabetes with foot infection.\nTreatment given: Insulin regimen started, wound dressing, IV antibiotics.\nHe is advised rest for 10 days and review in the outpatient department.\n\nSigned: Dr. S. K. Paul\nRegistration No. PRH-6702"
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Rajesh Malhotra",
+      "hospital_name": "Periyar Riverside Hospital",
+      "invoice_number": "PRH-B-26-6012",
+      "admission_date": null,
+      "discharge_date": null,
+      "total_amount": 22200,
+      "line_items": [
+        10000,
+        6300,
+        2700,
+        3200
+      ]
+    },
+    "missing_fields": [
+      "admission_date",
+      "discharge_date"
+    ],
+    "conflicts": [],
+    "triage_category": "needs_more_information"
+  }
+}

@@ -1,0 +1,54 @@
+{
+  "id": "case_08",
+  "category": "clean",
+  "description": "Asthma. Receipt bill (dash dates) + discharge summary + prescription.",
+  "policy": {
+    "policy_number": "POL-26-0008",
+    "holder_name": "Kavya Menon",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Kavya Menon",
+    "policy_number": "POL-26-0008",
+    "admission_date": "2026-07-21",
+    "discharge_date": "2026-07-23",
+    "total_amount": 8950
+  },
+  "sources": [
+    {
+      "name": "Money receipt",
+      "type": "hospital_bill",
+      "text": "Pink City Valley Hospital\nTonk Road, Jaipur 302018\nMONEY RECEIPT / CASH MEMO\nMemo No. PCV/2026/07/2214\nDate: 23-Jul-2026\nReceived with thanks from: Kavya Menon (Patient ID PCV-2290)\nAdmitted: 21-Jul-2026    Released: 23-Jul-2026\nDescription of charges:\n  - Bed (Female ward) (2 days) ........ ₹ 3,000.00/-\n  - Nebulisation & oxygen ........ ₹ 1,800.00/-\n  - Medicines ........ ₹ 2,650.00/-\n  - Doctor visit (2 visits) ........ ₹ 1,500.00/-\nGrand Total ........ ₹ 8,950.00/-\n\nAuthorised signature: ____________\nThank you for choosing Pink City Valley Hospital"
+    },
+    {
+      "name": "Discharge summary",
+      "type": "discharge_summary",
+      "text": "Pink City Valley Hospital\nTonk Road, Jaipur 302018\nDISCHARGE SUMMARY\n\nPatient: Kavya Menon    Age/Sex: 19/F    Hospital ID: PCV-2290\nConsultant: Dr. Anil Thakur (Medicine)\nDate of Admission: 21st July, 2026\nDate of Discharge: 23rd July, 2026\nDiagnosis: Acute severe asthma\nCourse in hospital: Nebulised salbutamol, IV hydrocortisone, then oral prednisolone.\nCondition at discharge: Stable, afebrile, taking oral diet.\nAdvice on discharge: Continue medicines as prescribed. Plenty of oral fluids. Avoid heavy work for 2 weeks.\nFollow-up: OPD after 7 days with reports."
+    },
+    {
+      "name": "Prescription",
+      "type": "prescription",
+      "text": "Pink City Valley Hospital - Discharge Prescription\nDate: 23/07/2026\nPt: Kavya Menon    Age: 19 yrs\nRx\n1. Tab. Prednisolone 20 mg 2+0+0 x 5 days\n2. Salbutamol inhaler 2 puffs when needed\n3. Tab. Montelukast 10 mg 0+0+1 x 30 days\n\nDr. Anil Thakur\nMedicine"
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Kavya Menon",
+      "hospital_name": "Pink City Valley Hospital",
+      "invoice_number": "PCV/2026/07/2214",
+      "admission_date": "2026-07-21",
+      "discharge_date": "2026-07-23",
+      "total_amount": 8950,
+      "line_items": [
+        3000,
+        1800,
+        2650,
+        1500
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "ready_for_review"
+  }
+}

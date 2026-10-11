@@ -1,0 +1,28 @@
+{
+  "document_type": "other",
+  "patient_name": {
+    "value": "Lakshmi Pillai",
+    "evidence": "Lakshmi Pillai"
+  },
+  "hospital_name": {
+    "value": "Sabarmati Trust Hospital",
+    "evidence": "Sabarmati Trust Hospital"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "18 January",
+    "evidence": "18 January"
+  },
+  "discharge_date": {
+    "value": "21 January",
+    "evidence": "21 January"
+  },
+  "total_amount": {
+    "value": "18,700.00",
+    "evidence": "Rs. 18,700.00"
+  },
+  "line_items": []
+}

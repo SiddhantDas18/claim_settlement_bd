@@ -1,0 +1,53 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "Meera Kulkarni",
+    "evidence": "Patient Name: Meera Kulkarni"
+  },
+  "hospital_name": {
+    "value": "LAKEVIEW MULTISPECIALITY HOSPITAL",
+    "evidence": "LAKEVIEW MULTISPECIALITY HOSPITAL"
+  },
+  "invoice_number": {
+    "value": "LMH-INV-781102",
+    "evidence": "Invoice No: LMH-INV-781102"
+  },
+  "admission_date": {
+    "value": "01/09/2026",
+    "evidence": "Admission Date: 01/09/2026"
+  },
+  "discharge_date": {
+    "value": "03/09/2026",
+    "evidence": "Discharge Date: 03/09/2026"
+  },
+  "total_amount": {
+    "value": "59,850.00",
+    "evidence": "Total Amount (Rs.): 59,850.00"
+  },
+  "line_items": [
+    {
+      "description": "Cabin rent",
+      "category": "room",
+      "amount": "7,000.00",
+      "evidence": "1   Cabin rent                            2 days    7,000.00"
+    },
+    {
+      "description": "Hernia repair (mesh)",
+      "category": "surgery",
+      "amount": "42,000.00",
+      "evidence": "2   Hernia repair (mesh)                            42,000.00"
+    },
+    {
+      "description": "Anaesthesia",
+      "category": "surgery",
+      "amount": "7,000.00",
+      "evidence": "3   Anaesthesia                                     7,000.00"
+    },
+    {
+      "description": "Medicines",
+      "category": "medicine",
+      "amount": "3,850.00",
+      "evidence": "4   Medicines                                       3,850.00"
+    }
+  ]
+}

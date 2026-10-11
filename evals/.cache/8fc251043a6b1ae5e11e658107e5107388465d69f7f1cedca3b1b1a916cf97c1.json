@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Pooja Bhatt",
+    "evidence": "Pooja Bhatt"
+  },
+  "hospital_name": {
+    "value": "BRAHMAPUTRA GREEN VIEW HOSPITAL",
+    "evidence": "BRAHMAPUTRA GREEN VIEW HOSPITAL"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "28-May-2026",
+    "evidence": "28-May-2026"
+  },
+  "discharge_date": {
+    "value": "30-May-2026",
+    "evidence": "30-May-2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

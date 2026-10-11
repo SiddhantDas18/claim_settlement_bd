@@ -1,0 +1,51 @@
+{
+  "id": "case_05",
+  "category": "clean",
+  "description": "Pneumonia. Receipt bill with an advance payment (total vs balance trap) + scanned discharge summary (scanned PDF).",
+  "policy": {
+    "policy_number": "POL-26-0005",
+    "holder_name": "Venkatesh Iyer",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Venkatesh Iyer",
+    "policy_number": "POL-26-0005",
+    "hospital_name": "Brahmaputra Green View Hospital",
+    "admission_date": "2026-02-14",
+    "discharge_date": "2026-02-19",
+    "total_amount": 38600
+  },
+  "sources": [
+    {
+      "name": "Money receipt",
+      "type": "hospital_bill",
+      "text": "Brahmaputra Green View Hospital\nG.S. Road, Guwahati 781005\nMONEY RECEIPT / CASH MEMO\nMemo No. BGV/MR/26/3310\nDate: 19 Feb 2026\nReceived with thanks from: Venkatesh Iyer (Patient ID BGV-11902)\nAdmitted: 14 Feb 2026    Released: 19 Feb 2026\nDescription of charges:\n  - Cabin charge (5 days) ........ ₹ 17,500.00/-\n  - Oxygen & nebulisation ........ ₹ 3,200.00/-\n  - Medicines & IV antibiotics ........ ₹ 11,400.00/-\n  - Chest X-ray, CBC, CRP ........ ₹ 2,900.00/-\n  - Physician round (5 visits) ........ ₹ 3,600.00/-\nGrand Total ........ ₹ 38,600.00/-\nAdvance received on admission: ₹ 20,000.00/-\nBalance paid at discharge: ₹ 18,600.00/-\n\nAuthorised signature: ____________\nThank you for choosing Brahmaputra Green View Hospital"
+    },
+    {
+      "name": "Discharge summary (scan)",
+      "type": "discharge_summary",
+      "file": "files/case_05_discharge_summary_scan.pdf"
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Venkatesh Iyer",
+      "hospital_name": "Brahmaputra Green View Hospital",
+      "invoice_number": "BGV/MR/26/3310",
+      "admission_date": "2026-02-14",
+      "discharge_date": "2026-02-19",
+      "total_amount": 38600,
+      "line_items": [
+        17500,
+        3200,
+        11400,
+        2900,
+        3600
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "ready_for_review"
+  }
+}

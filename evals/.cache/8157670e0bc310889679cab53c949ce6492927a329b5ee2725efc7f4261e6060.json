@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Suresh Patel",
+    "evidence": "Suresh Patel"
+  },
+  "hospital_name": {
+    "value": "SAHYADRI CARE HOSPITAL PVT. LTD.",
+    "evidence": "SAHYADRI CARE HOSPITAL PVT. LTD."
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "25th August, 2026",
+    "evidence": "25th August, 2026"
+  },
+  "discharge_date": {
+    "value": "29th August, 2026",
+    "evidence": "29th August, 2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}
