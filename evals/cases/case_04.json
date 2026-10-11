@@ -1,0 +1,54 @@
+{
+  "id": "case_04",
+  "category": "clean",
+  "description": "Typhoid. Table bill + discharge certificate + lab report with many numbers (not amounts).",
+  "policy": {
+    "policy_number": "POL-26-0004",
+    "holder_name": "Sunita Yadav",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Sunita Yadav",
+    "policy_number": "POL-26-0004",
+    "hospital_name": "Gomti Lifeline Clinic",
+    "admission_date": "2026-04-07",
+    "discharge_date": "2026-04-10"
+  },
+  "sources": [
+    {
+      "name": "Final bill",
+      "type": "hospital_bill",
+      "text": "GOMTI LIFELINE CLINIC\nSector 14, Indira Nagar, Lucknow 226016 | Phone: 0522-4017722\nIN-PATIENT FINAL BILL\n\nInvoice No: GLC-2026-01977        Bill Date: 10/04/2026\nPatient Name: Sunita Yadav        Reg. No: GLC-7781\nAdmission Date: 07/04/2026        Discharge Date: 10/04/2026\nConsultant: Dr. M. A. Siddiqui\n----------------------------------------------------------------\nSL  Particulars                           Qty       Amount (Rs.)\n1   Ward bed                              3 days    4,500.00\n2   Injection Ceftriaxone & IV fluids               3,900.00\n3   Blood culture, Widal, CBC                       2,650.00\n4   Consultant visit                      3 visits  2,400.00\n----------------------------------------------------------------\n                                 Total Amount (Rs.): 13,450.00\nIn words: Rupees Thirteen Thousand Four Hundred Fifty Only\nPaid: 13,450.00    Due: 0.00\nCashier: R. Mondal    This is a computer generated bill."
+    },
+    {
+      "name": "Discharge certificate",
+      "type": "discharge_summary",
+      "text": "GOMTI LIFELINE CLINIC - Department of Medicine\nDISCHARGE CERTIFICATE\n\nThis is to certify that Sunita Yadav, 51 years, female, was admitted to this hospital on 07-Apr-2026 and discharged on 10-Apr-2026.\nDiagnosis: Enteric fever (typhoid).\nTreatment given: Treated with IV ceftriaxone for 3 days, then switched to oral cefixime.\nShe is advised rest for 10 days and review in the outpatient department.\n\nSigned: Dr. M. A. Siddiqui\nRegistration No. GLC-7781"
+    },
+    {
+      "name": "Lab report",
+      "type": "lab_report",
+      "text": "Gomti Lifeline Clinic - Department of Laboratory Medicine\nPatient Name: Sunita Yadav    Age: 51    Sex: F    Lab ID: L-GLC-7781\nSample collected: 08/04/2026    Report date: 08/04/2026\nReferred by: Dr. M. A. Siddiqui\n\nTest                              Result              Reference range\nHaemoglobin                       11.2 g/dL           12.0-15.5\nWBC count                         4,200 /cumm         4,000-11,000\nPlatelet count                    1,85,000 /cumm      1,50,000-4,50,000\nBlood culture                     Salmonella typhi    No growth\n\nChecked by: Consultant Pathologist"
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Sunita Yadav",
+      "hospital_name": "Gomti Lifeline Clinic",
+      "invoice_number": "GLC-2026-01977",
+      "admission_date": "2026-04-07",
+      "discharge_date": "2026-04-10",
+      "total_amount": 13450,
+      "line_items": [
+        4500,
+        3900,
+        2650,
+        2400
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "ready_for_review"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Farah Siddiqui",
+    "evidence": "Patient: Farah Siddiqui"
+  },
+  "hospital_name": {
+    "value": "Sahyadri Care Hospital Pvt. Ltd.",
+    "evidence": "Sahyadri Care Hospital Pvt. Ltd."
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "20th September, 2026",
+    "evidence": "Date of Admission: 20th September, 2026"
+  },
+  "discharge_date": {
+    "value": "22nd September, 2026",
+    "evidence": "Date of Discharge: 22nd September, 2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

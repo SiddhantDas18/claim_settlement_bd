@@ -1,0 +1,51 @@
+{
+  "id": "case_06",
+  "category": "clean",
+  "description": "Gastroenteritis. Table bill + discharge summary + claimant email that repeats dates and total.",
+  "policy": {
+    "policy_number": "POL-26-0006",
+    "holder_name": "Ananya Gupta",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Ananya Gupta",
+    "policy_number": "POL-26-0006"
+  },
+  "sources": [
+    {
+      "name": "Final bill",
+      "type": "hospital_bill",
+      "text": "DWARKA CRESCENT HOSPITAL\nSector 7, Dwarka, New Delhi 110075 | Phone: 011-45512288\nIN-PATIENT FINAL BILL\n\nInvoice No: DCH/IPD/26/0981        Bill Date: 04/05/2026\nPatient Name: Ananya Gupta        Reg. No: DCH-40021\nAdmission Date: 02/05/2026        Discharge Date: 04/05/2026\nConsultant: Dr. Farida Khan\n----------------------------------------------------------------\nSL  Particulars                           Qty       Amount (Rs.)\n1   General bed                           2 days    5,000.00\n2   IV fluids & medicines                           3,150.00\n3   Stool R/E, serum electrolytes                   1,400.00\n4   Consultation                          2 visits  1,600.00\n----------------------------------------------------------------\n                                 Total Amount (Rs.): 11,150.00\nIn words: Rupees Eleven Thousand One Hundred Fifty Only\nPaid: 11,150.00    Due: 0.00\nCashier: R. Mondal    This is a computer generated bill."
+    },
+    {
+      "name": "Discharge summary",
+      "type": "discharge_summary",
+      "text": "Dwarka Crescent Hospital\nSector 7, Dwarka, New Delhi 110075\nDISCHARGE SUMMARY\n\nPatient: Ananya Gupta    Age/Sex: 26/F    Hospital ID: DCH-40021\nConsultant: Dr. Farida Khan (Medicine)\nDate of Admission: 02 May 2026\nDate of Discharge: 04 May 2026\nDiagnosis: Acute gastroenteritis with dehydration\nCourse in hospital: Rehydrated with IV fluids, oral antibiotics started.\nCondition at discharge: Stable, afebrile, taking oral diet.\nAdvice on discharge: Continue medicines as prescribed. Plenty of oral fluids. Avoid heavy work for 2 weeks.\nFollow-up: OPD after 7 days with reports."
+    },
+    {
+      "name": "Claimant email",
+      "type": "claimant_email",
+      "text": "From: ananya.gupta@example.com\nTo: claims@insurer.example\nSubject: Health claim - Ananya Gupta - POL-26-0006\n\nDear Sir/Madam,\nI am writing to claim for my treatment at Dwarka Crescent Hospital. I was admitted on 2nd May, 2026 and discharged on 4th May, 2026. The total hospital bill was Rs. 11,150.00. My policy number is POL-26-0006. I have attached the documents from the hospital.\nPlease let me know if anything else is needed.\n\nRegards,\nAnanya Gupta\nMobile: +91 9653225482"
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Ananya Gupta",
+      "hospital_name": "Dwarka Crescent Hospital",
+      "invoice_number": "DCH/IPD/26/0981",
+      "admission_date": "2026-05-02",
+      "discharge_date": "2026-05-04",
+      "total_amount": 11150,
+      "line_items": [
+        5000,
+        3150,
+        1400,
+        1600
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "ready_for_review"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Mr. Mohit Verma",
+    "evidence": "Patient: Mr. Mohit Verma"
+  },
+  "hospital_name": {
+    "value": "Dwarka Crescent Hospital",
+    "evidence": "Dwarka Crescent Hospital"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "18th August, 2026",
+    "evidence": "Date of Admission: 18th August, 2026"
+  },
+  "discharge_date": {
+    "value": "21st August, 2026",
+    "evidence": "Date of Discharge: 21st August, 2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

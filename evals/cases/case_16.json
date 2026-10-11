@@ -1,0 +1,52 @@
+{
+  "id": "case_16",
+  "category": "incomplete",
+  "description": "No discharge summary uploaded (required document missing). Bill + email only.",
+  "policy": {
+    "policy_number": "POL-26-0016",
+    "holder_name": "Sneha Rao",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Sneha Rao",
+    "policy_number": "POL-26-0016",
+    "hospital_name": "Dwarka Crescent Hospital",
+    "admission_date": "2026-07-11",
+    "discharge_date": "2026-07-13",
+    "total_amount": 11200
+  },
+  "sources": [
+    {
+      "name": "Final bill",
+      "type": "hospital_bill",
+      "text": "DWARKA CRESCENT HOSPITAL\nSector 7, Dwarka, New Delhi 110075 | Phone: 011-45512288\nIN-PATIENT FINAL BILL\n\nInvoice No: DCH/IPD/26/1033        Bill Date: 13/07/2026\nPatient Name: Sneha Rao        Reg. No: DCH-40377\nAdmission Date: 11/07/2026        Discharge Date: 13/07/2026\nConsultant: Dr. Farida Khan\n----------------------------------------------------------------\nSL  Particulars                           Qty       Amount (Rs.)\n1   General bed                           2 days    5,000.00\n2   Medicines                                       2,400.00\n3   Ultrasound, CBC                                 2,200.00\n4   Consultation                          2 visits  1,600.00\n----------------------------------------------------------------\n                                 Total Amount (Rs.): 11,200.00\nIn words: Rupees Eleven Thousand Two Hundred Only\nPaid: 11,200.00    Due: 0.00\nCashier: R. Mondal    This is a computer generated bill."
+    },
+    {
+      "name": "Claimant email",
+      "type": "claimant_email",
+      "text": "From: sneha.rao@example.com\nTo: claims@insurer.example\nSubject: Health claim - Sneha Rao - POL-26-0016\n\nDear Sir/Madam,\nI am writing to claim for my treatment at Dwarka Crescent Hospital. I was admitted on 11th July, 2026 and discharged on 13th July, 2026. The total hospital bill was Rs. 11,200.00. My policy number is POL-26-0016. I have attached the documents from the hospital.\nPlease let me know if anything else is needed.\n\nRegards,\nSneha Rao\nMobile: +91 9299302650"
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Sneha Rao",
+      "hospital_name": "Dwarka Crescent Hospital",
+      "invoice_number": "DCH/IPD/26/1033",
+      "admission_date": "2026-07-11",
+      "discharge_date": "2026-07-13",
+      "total_amount": 11200,
+      "line_items": [
+        5000,
+        2400,
+        2200,
+        1600
+      ]
+    },
+    "missing_fields": [
+      "document:discharge_summary"
+    ],
+    "conflicts": [],
+    "triage_category": "needs_more_information"
+  }
+}

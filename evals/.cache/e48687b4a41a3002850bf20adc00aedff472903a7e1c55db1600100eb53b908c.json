@@ -1,0 +1,28 @@
+{
+  "document_type": "prescription",
+  "patient_name": {
+    "value": "Priya Nair",
+    "evidence": "Pt: Priya Nair"
+  },
+  "hospital_name": {
+    "value": "Lakeview Multispeciality Hospital",
+    "evidence": "Lakeview Multispeciality Hospital"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": null,
+    "evidence": null
+  },
+  "discharge_date": {
+    "value": null,
+    "evidence": null
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

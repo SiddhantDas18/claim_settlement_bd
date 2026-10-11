@@ -1,0 +1,52 @@
+{
+  "id": "case_15",
+  "category": "incomplete",
+  "description": "Bill is a plain cash memo with no invoice number; form has none either.",
+  "policy": {
+    "policy_number": "POL-26-0015",
+    "holder_name": "Aditya Joshi",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Aditya Joshi",
+    "policy_number": "POL-26-0015",
+    "hospital_name": "Gomti Lifeline Clinic",
+    "admission_date": "2026-06-02",
+    "discharge_date": "2026-06-04",
+    "total_amount": 7700
+  },
+  "sources": [
+    {
+      "name": "Cash memo",
+      "type": "hospital_bill",
+      "text": "GOMTI LIFELINE CLINIC\nSector 14, Indira Nagar, Lucknow 226016 | Phone: 0522-4017722\nIN-PATIENT FINAL BILL\n\nCash Memo        Bill Date: 04/06/2026\nPatient Name: Aditya Joshi        Reg. No: GLC-7990\nAdmission Date: 02/06/2026        Discharge Date: 04/06/2026\nConsultant: Dr. M. A. Siddiqui\n----------------------------------------------------------------\nSL  Particulars                           Qty       Amount (Rs.)\n1   Ward bed                              2 days    3,000.00\n2   Medicines                                       2,200.00\n3   CBC, RBS                                        900.00\n4   Doctor visit                          2 visits  1,600.00\n----------------------------------------------------------------\n                                 Total Amount (Rs.): 7,700.00\nIn words: Rupees Seven Thousand Seven Hundred Only\nPaid: 7,700.00    Due: 0.00\nCashier: R. Mondal    This is a computer generated bill."
+    },
+    {
+      "name": "Discharge summary",
+      "type": "discharge_summary",
+      "text": "Gomti Lifeline Clinic\nSector 14, Indira Nagar, Lucknow 226016\nDISCHARGE SUMMARY\n\nPatient: Aditya Joshi    Age/Sex: 31/M    Hospital ID: GLC-7990\nConsultant: Dr. M. A. Siddiqui (Medicine)\nDate of Admission: 2nd June, 2026\nDate of Discharge: 4th June, 2026\nDiagnosis: Acute febrile illness\nCourse in hospital: IV fluids and antipyretics.\nCondition at discharge: Stable, afebrile, taking oral diet.\nAdvice on discharge: Continue medicines as prescribed. Plenty of oral fluids. Avoid heavy work for 2 weeks.\nFollow-up: OPD after 7 days with reports."
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Aditya Joshi",
+      "hospital_name": "Gomti Lifeline Clinic",
+      "invoice_number": null,
+      "admission_date": "2026-06-02",
+      "discharge_date": "2026-06-04",
+      "total_amount": 7700,
+      "line_items": [
+        3000,
+        2200,
+        900,
+        1600
+      ]
+    },
+    "missing_fields": [
+      "invoice_number"
+    ],
+    "conflicts": [],
+    "triage_category": "needs_more_information"
+  }
+}

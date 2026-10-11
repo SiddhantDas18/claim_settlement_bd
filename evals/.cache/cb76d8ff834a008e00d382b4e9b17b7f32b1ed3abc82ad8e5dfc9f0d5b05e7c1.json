@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Aditya Joshi",
+    "evidence": "Patient: Aditya Joshi"
+  },
+  "hospital_name": {
+    "value": "Gomti Lifeline Clinic",
+    "evidence": "Gomti Lifeline Clinic"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "2nd June, 2026",
+    "evidence": "Date of Admission: 2nd June, 2026"
+  },
+  "discharge_date": {
+    "value": "4th June, 2026",
+    "evidence": "Date of Discharge: 4th June, 2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

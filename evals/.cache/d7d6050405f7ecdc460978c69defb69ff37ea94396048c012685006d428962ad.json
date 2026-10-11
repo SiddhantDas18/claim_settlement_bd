@@ -1,0 +1,53 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "Kavya Menon",
+    "evidence": "Received with thanks from: Kavya Menon"
+  },
+  "hospital_name": {
+    "value": "Pink City Valley Hospital",
+    "evidence": "Pink City Valley Hospital"
+  },
+  "invoice_number": {
+    "value": "PCV/2026/07/2214",
+    "evidence": "Memo No. PCV/2026/07/2214"
+  },
+  "admission_date": {
+    "value": "21-Jul-2026",
+    "evidence": "Admitted: 21-Jul-2026"
+  },
+  "discharge_date": {
+    "value": "23-Jul-2026",
+    "evidence": "Released: 23-Jul-2026"
+  },
+  "total_amount": {
+    "value": "8,950.00",
+    "evidence": "Grand Total ........ ₹ 8,950.00/-"
+  },
+  "line_items": [
+    {
+      "description": "Bed (Female ward) (2 days)",
+      "category": "room",
+      "amount": "3,000.00",
+      "evidence": "- Bed (Female ward) (2 days) ........ ₹ 3,000.00/-"
+    },
+    {
+      "description": "Nebulisation & oxygen",
+      "category": "other",
+      "amount": "1,800.00",
+      "evidence": "- Nebulisation & oxygen ........ ₹ 1,800.00/-"
+    },
+    {
+      "description": "Medicines",
+      "category": "medicine",
+      "amount": "2,650.00",
+      "evidence": "- Medicines ........ ₹ 2,650.00/-"
+    },
+    {
+      "description": "Doctor visit (2 visits)",
+      "category": "consultation",
+      "amount": "1,500.00",
+      "evidence": "- Doctor visit (2 visits) ........ ₹ 1,500.00/-"
+    }
+  ]
+}

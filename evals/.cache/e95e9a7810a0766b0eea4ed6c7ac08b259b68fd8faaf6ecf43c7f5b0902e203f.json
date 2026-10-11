@@ -1,0 +1,53 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "Priya Nair",
+    "evidence": "Received with thanks from: Priya Nair"
+  },
+  "hospital_name": {
+    "value": "Lakeview Multispeciality Hospital",
+    "evidence": "Lakeview Multispeciality Hospital"
+  },
+  "invoice_number": {
+    "value": "LMH-INV-778341",
+    "evidence": "Memo No. LMH-INV-778341"
+  },
+  "admission_date": {
+    "value": "03 Aug 2026",
+    "evidence": "Admitted: 03 Aug 2026"
+  },
+  "discharge_date": {
+    "value": "06 Aug 2026",
+    "evidence": "Released: 06 Aug 2026"
+  },
+  "total_amount": {
+    "value": "21,620.00",
+    "evidence": "Grand Total ........ ₹ 21,620.00/-"
+  },
+  "line_items": [
+    {
+      "description": "Cabin rent (3 days)",
+      "category": "room",
+      "amount": "10,500.00",
+      "evidence": "Cabin rent (3 days) ........ ₹ 10,500.00/-"
+    },
+    {
+      "description": "Medicines",
+      "category": "medicine",
+      "amount": "5,320.00",
+      "evidence": "Medicines ........ ₹ 5,320.00/-"
+    },
+    {
+      "description": "Platelet count x4, Dengue NS1",
+      "category": "diagnostics",
+      "amount": "2,800.00",
+      "evidence": "Platelet count x4, Dengue NS1 ........ ₹ 2,800.00/-"
+    },
+    {
+      "description": "Doctor visit (3 visits)",
+      "category": "consultation",
+      "amount": "3,000.00",
+      "evidence": "Doctor visit (3 visits) ........ ₹ 3,000.00/-"
+    }
+  ]
+}

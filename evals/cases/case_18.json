@@ -1,0 +1,50 @@
+{
+  "id": "case_18",
+  "category": "incomplete",
+  "description": "Total on the bill is smudged / unreadable OCR ('1?,8S0.0O') and the form has no amount; the AI must not add up the items.",
+  "policy": {
+    "policy_number": "POL-26-0018",
+    "holder_name": "Rekha Deshmukh",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Rekha Deshmukh",
+    "policy_number": "POL-26-0018",
+    "admission_date": "2026-08-10",
+    "discharge_date": "2026-08-13"
+  },
+  "sources": [
+    {
+      "name": "Hospital bill (scan)",
+      "type": "hospital_bill",
+      "text": "ORANGE CITY MEDICAL CENTRE   NAGPUR 440015\nBILL NO : OCMC-26-08-0311     DATE : 13-AUG-2026\nNAME OF PATIENT : REKHA DESHMUKH    AGE : 44 Y    SEX : FEMALE\nDATE OF ADMISSION : 10-AUG-2026    DATE OF DISCHARGE : 13-AUG-2026\nPARTICULARS                                 AMOUNT\nBED CHARGE 3 DAYS                           5,400.00\nMEDICINE                                    6,250.00\nPATHOLOGY                                   3,200.00\nCONSULTATION 3 VISITS                       4,000.00\nNET TOTAL                                   1?,8S0.0O\nRECEIVED BY : ACCOUNTS SECTION"
+    },
+    {
+      "name": "Discharge summary",
+      "type": "discharge_summary",
+      "text": "Orange City Medical Centre\nWardha Road, Nagpur 440015\nDISCHARGE SUMMARY\n\nPatient: Rekha Deshmukh    Age/Sex: 44/F    Hospital ID: OCMC-1322\nConsultant: Dr. Rakesh Kapoor (Medicine)\nDate of Admission: 10th August, 2026\nDate of Discharge: 13th August, 2026\nDiagnosis: Acute pyelonephritis\nCourse in hospital: IV antibiotics for 3 days.\nCondition at discharge: Stable, afebrile, taking oral diet.\nAdvice on discharge: Continue medicines as prescribed. Plenty of oral fluids. Avoid heavy work for 2 weeks.\nFollow-up: OPD after 7 days with reports."
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Rekha Deshmukh",
+      "hospital_name": "Orange City Medical Centre",
+      "invoice_number": "OCMC-26-08-0311",
+      "admission_date": "2026-08-10",
+      "discharge_date": "2026-08-13",
+      "total_amount": null,
+      "line_items": [
+        5400,
+        6250,
+        3200,
+        4000
+      ]
+    },
+    "missing_fields": [
+      "total_amount"
+    ],
+    "conflicts": [],
+    "triage_category": "needs_more_information"
+  }
+}

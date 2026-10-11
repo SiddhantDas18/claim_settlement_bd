@@ -1,0 +1,28 @@
+{
+  "document_type": "other",
+  "patient_name": {
+    "value": "Ananya Gupta",
+    "evidence": "Health claim - Ananya Gupta - POL-26-0006"
+  },
+  "hospital_name": {
+    "value": "Dwarka Crescent Hospital",
+    "evidence": "I am writing to claim for my treatment at Dwarka Crescent Hospital."
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "2nd May, 2026",
+    "evidence": "I was admitted on 2nd May, 2026"
+  },
+  "discharge_date": {
+    "value": "4th May, 2026",
+    "evidence": "discharged on 4th May, 2026."
+  },
+  "total_amount": {
+    "value": "11,150.00",
+    "evidence": "The total hospital bill was Rs. 11,150.00."
+  },
+  "line_items": []
+}

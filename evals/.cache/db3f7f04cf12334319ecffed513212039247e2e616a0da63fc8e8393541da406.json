@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Vikram Singh",
+    "evidence": "Vikram Singh, 38 years"
+  },
+  "hospital_name": {
+    "value": "ORANGE CITY MEDICAL CENTRE",
+    "evidence": "ORANGE CITY MEDICAL CENTRE"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "2026-10-01",
+    "evidence": "admitted to this hospital on 2026-10-01"
+  },
+  "discharge_date": {
+    "value": "2026-10-03",
+    "evidence": "discharged on 2026-10-03"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

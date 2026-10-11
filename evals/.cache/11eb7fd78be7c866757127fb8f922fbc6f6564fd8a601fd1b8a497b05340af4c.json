@@ -1,0 +1,53 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "LAKSHMI PILLAI",
+    "evidence": "NAME OF PATIENT : LAKSHMI PILLAI"
+  },
+  "hospital_name": {
+    "value": "SABARMATI TRUST HOSPITAL",
+    "evidence": "SABARMATI TRUST HOSPITAL"
+  },
+  "invoice_number": {
+    "value": "STH/IP/0118/26",
+    "evidence": "BILL NO : STH/IP/0118/26"
+  },
+  "admission_date": {
+    "value": "18-JAN-2026",
+    "evidence": "DATE OF ADMISSION : 18-JAN-2026"
+  },
+  "discharge_date": {
+    "value": "21-JAN-2026",
+    "evidence": "DATE OF DISCHARGE : 21-JAN-2026"
+  },
+  "total_amount": {
+    "value": "18,700.00",
+    "evidence": "NET TOTAL                                   18,700.00"
+  },
+  "line_items": [
+    {
+      "description": "CABIN 3 DAYS",
+      "category": "room",
+      "amount": "6,600.00",
+      "evidence": "CABIN 3 DAYS                                6,600.00"
+    },
+    {
+      "description": "INJ. MEROPENEM & IV FLUID",
+      "category": "medicine",
+      "amount": "7,800.00",
+      "evidence": "INJ. MEROPENEM & IV FLUID                   7,800.00"
+    },
+    {
+      "description": "URINE C/S, CBC, CREATININE",
+      "category": "diagnostics",
+      "amount": "2,300.00",
+      "evidence": "URINE C/S, CBC, CREATININE                  2,300.00"
+    },
+    {
+      "description": "DOCTOR FEE",
+      "category": "consultation",
+      "amount": "2,000.00",
+      "evidence": "DOCTOR FEE                                  2,000.00"
+    }
+  ]
+}

@@ -1,0 +1,59 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "Suresh Patel",
+    "evidence": "Received with thanks from: Suresh Patel"
+  },
+  "hospital_name": {
+    "value": "Sahyadri Care Hospital Pvt. Ltd.",
+    "evidence": "Sahyadri Care Hospital Pvt. Ltd."
+  },
+  "invoice_number": {
+    "value": "SCH/IPD/2026/03877",
+    "evidence": "Memo No. SCH/IPD/2026/03877"
+  },
+  "admission_date": {
+    "value": "25 Aug 2026",
+    "evidence": "Admitted: 25 Aug 2026"
+  },
+  "discharge_date": {
+    "value": "29 Aug 2026",
+    "evidence": "Released: 29 Aug 2026"
+  },
+  "total_amount": {
+    "value": "1,24,600.00",
+    "evidence": "Grand Total ........ ₹ 1,24,600.00/-"
+  },
+  "line_items": [
+    {
+      "description": "Cabin rent (4 days)",
+      "category": "room",
+      "amount": "16,000.00",
+      "evidence": "Cabin rent (4 days) ........ ₹ 16,000.00/-"
+    },
+    {
+      "description": "Laparoscopic cholecystectomy package",
+      "category": "surgery",
+      "amount": "72,000.00",
+      "evidence": "Laparoscopic cholecystectomy package ........ ₹ 72,000.00/-"
+    },
+    {
+      "description": "Anaesthesia charge",
+      "category": "surgery",
+      "amount": "12,000.00",
+      "evidence": "Anaesthesia charge ........ ₹ 12,000.00/-"
+    },
+    {
+      "description": "Medicines & consumables",
+      "category": "medicine",
+      "amount": "18,400.00",
+      "evidence": "Medicines & consumables ........ ₹ 18,400.00/-"
+    },
+    {
+      "description": "USG, LFT, CBC",
+      "category": "diagnostics",
+      "amount": "6,200.00",
+      "evidence": "USG, LFT, CBC ........ ₹ 6,200.00/-"
+    }
+  ]
+}

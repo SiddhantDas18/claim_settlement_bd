@@ -1,0 +1,53 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "Aditya Joshi",
+    "evidence": "Patient Name: Aditya Joshi"
+  },
+  "hospital_name": {
+    "value": "GOMTI LIFELINE CLINIC",
+    "evidence": "GOMTI LIFELINE CLINIC"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "02/06/2026",
+    "evidence": "Admission Date: 02/06/2026"
+  },
+  "discharge_date": {
+    "value": "04/06/2026",
+    "evidence": "Discharge Date: 04/06/2026"
+  },
+  "total_amount": {
+    "value": "7,700.00",
+    "evidence": "Total Amount (Rs.): 7,700.00"
+  },
+  "line_items": [
+    {
+      "description": "Ward bed",
+      "category": "room",
+      "amount": "3,000.00",
+      "evidence": "1   Ward bed                              2 days    3,000.00"
+    },
+    {
+      "description": "Medicines",
+      "category": "medicine",
+      "amount": "2,200.00",
+      "evidence": "2   Medicines                                       2,200.00"
+    },
+    {
+      "description": "CBC, RBS",
+      "category": "diagnostics",
+      "amount": "900.00",
+      "evidence": "3   CBC, RBS                                        900.00"
+    },
+    {
+      "description": "Doctor visit",
+      "category": "consultation",
+      "amount": "1,600.00",
+      "evidence": "4   Doctor visit                          2 visits  1,600.00"
+    }
+  ]
+}

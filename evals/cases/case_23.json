@@ -1,0 +1,49 @@
+{
+  "id": "case_23",
+  "category": "tricky",
+  "description": "Bill gives the total only in words ('Rupees Twenty Two Thousand Five Hundred Only'). Form has no total.",
+  "policy": {
+    "policy_number": "POL-26-0023",
+    "holder_name": "Farah Siddiqui",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Farah Siddiqui",
+    "policy_number": "POL-26-0023",
+    "hospital_name": "Sahyadri Care Hospital Pvt. Ltd.",
+    "admission_date": "2026-09-20",
+    "discharge_date": "2026-09-22"
+  },
+  "sources": [
+    {
+      "name": "Money receipt",
+      "type": "hospital_bill",
+      "text": "Sahyadri Care Hospital Pvt. Ltd.\nSurvey No. 12, Karve Road, Kothrud, Pune 411038\nMONEY RECEIPT / CASH MEMO\nMemo No. SCH/IPD/2026/04790\nDate: 22 Sep 2026\nReceived with thanks from: Farah Siddiqui (Patient ID 2026-093004)\nAdmitted: 20 Sep 2026    Released: 22 Sep 2026\nDescription of charges:\n  - Bed charge (2 days) ........ ₹ 6,000.00/-\n  - Medicines ........ ₹ 9,200.00/-\n  - MRI brain ........ ₹ 6,500.00/-\n  - Neurologist visit ........ ₹ 800.00/-\nTotal payable (in words): Rupees Twenty Two Thousand Five Hundred Only\n\nAuthorised signature: ____________\nThank you for choosing Sahyadri Care Hospital Pvt. Ltd."
+    },
+    {
+      "name": "Discharge summary",
+      "type": "discharge_summary",
+      "text": "Sahyadri Care Hospital Pvt. Ltd.\nSurvey No. 12, Karve Road, Kothrud, Pune 411038\nDISCHARGE SUMMARY\n\nPatient: Farah Siddiqui    Age/Sex: 37/F    Hospital ID: 2026-093004\nConsultant: Dr. Qadir Mohammed (Neurology)\nDate of Admission: 20th September, 2026\nDate of Discharge: 22nd September, 2026\nDiagnosis: Migraine with aura, MRI normal\nCourse in hospital: Analgesics and antiemetics; MRI brain normal.\nCondition at discharge: Stable, afebrile, taking oral diet.\nAdvice on discharge: Continue medicines as prescribed. Plenty of oral fluids. Avoid heavy work for 2 weeks.\nFollow-up: OPD after 7 days with reports."
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Farah Siddiqui",
+      "hospital_name": "Sahyadri Care Hospital Pvt. Ltd.",
+      "invoice_number": "SCH/IPD/2026/04790",
+      "admission_date": "2026-09-20",
+      "discharge_date": "2026-09-22",
+      "total_amount": 22500,
+      "line_items": [
+        6000,
+        9200,
+        6500,
+        800
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "ready_for_review"
+  }
+}

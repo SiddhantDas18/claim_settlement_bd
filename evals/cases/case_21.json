@@ -1,0 +1,51 @@
+{
+  "id": "case_21",
+  "category": "contradictory",
+  "description": "Form and policy are for Rohit Verma; bill and discharge summary are for Mohit Verma.",
+  "policy": {
+    "policy_number": "POL-26-0021",
+    "holder_name": "Rohit Verma",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Rohit Verma",
+    "policy_number": "POL-26-0021",
+    "hospital_name": "Dwarka Crescent Hospital",
+    "admission_date": "2026-08-18",
+    "discharge_date": "2026-08-21",
+    "total_amount": 16300
+  },
+  "sources": [
+    {
+      "name": "Final bill",
+      "type": "hospital_bill",
+      "text": "DWARKA CRESCENT HOSPITAL\nSector 7, Dwarka, New Delhi 110075 | Phone: 011-45512288\nIN-PATIENT FINAL BILL\n\nInvoice No: DCH/IPD/26/1129        Bill Date: 21/08/2026\nPatient Name: Mohit Verma        Reg. No: DCH-41200\nAdmission Date: 18/08/2026        Discharge Date: 21/08/2026\nConsultant: Dr. Farida Khan\n----------------------------------------------------------------\nSL  Particulars                           Qty       Amount (Rs.)\n1   General bed                           3 days    7,500.00\n2   Medicines                                       4,100.00\n3   CBC, Widal, LFT                                 2,300.00\n4   Consultation                          3 visits  2,400.00\n----------------------------------------------------------------\n                                 Total Amount (Rs.): 16,300.00\nIn words: Rupees Sixteen Thousand Three Hundred Only\nPaid: 16,300.00    Due: 0.00\nCashier: R. Mondal    This is a computer generated bill."
+    },
+    {
+      "name": "Discharge summary",
+      "type": "discharge_summary",
+      "text": "Dwarka Crescent Hospital\nSector 7, Dwarka, New Delhi 110075\nDISCHARGE SUMMARY\n\nPatient: Mr. Mohit Verma    Age/Sex: 24/M    Hospital ID: DCH-41200\nConsultant: Dr. Farida Khan (Medicine)\nDate of Admission: 18th August, 2026\nDate of Discharge: 21st August, 2026\nDiagnosis: Enteric fever\nCourse in hospital: IV ceftriaxone, then oral antibiotics.\nCondition at discharge: Stable, afebrile, taking oral diet.\nAdvice on discharge: Continue medicines as prescribed. Plenty of oral fluids. Avoid heavy work for 2 weeks.\nFollow-up: OPD after 7 days with reports."
+    }
+  ],
+  "expected": {
+    "fields": {
+      "hospital_name": "Dwarka Crescent Hospital",
+      "invoice_number": "DCH/IPD/26/1129",
+      "admission_date": "2026-08-18",
+      "discharge_date": "2026-08-21",
+      "total_amount": 16300,
+      "line_items": [
+        7500,
+        4100,
+        2300,
+        2400
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [
+      "patient_name"
+    ],
+    "triage_category": "conflicting_information"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Meera Kulkarni",
+    "evidence": "Patient: Meera Kulkarni"
+  },
+  "hospital_name": {
+    "value": "Lakeview Multispeciality Hospital",
+    "evidence": "Lakeview Multispeciality Hospital"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "01/09/2026",
+    "evidence": "Date of Admission: 01/09/2026"
+  },
+  "discharge_date": {
+    "value": "03/09/2026",
+    "evidence": "Date of Discharge: 03/09/2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

@@ -1,0 +1,51 @@
+{
+  "id": "case_09",
+  "category": "clean",
+  "description": "Chikungunya. Bill as a PNG photo (OCR) + discharge certificate.",
+  "policy": {
+    "policy_number": "POL-26-0009",
+    "holder_name": "Vikram Singh",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Vikram Singh",
+    "policy_number": "POL-26-0009",
+    "hospital_name": "Orange City Medical Centre",
+    "admission_date": "2026-10-01",
+    "discharge_date": "2026-10-03",
+    "total_amount": 8800,
+    "invoice_number": "OCMC-26-10-0045"
+  },
+  "sources": [
+    {
+      "name": "Hospital bill (photo)",
+      "type": "hospital_bill",
+      "file": "files/case_09_hospital_bill.png"
+    },
+    {
+      "name": "Discharge certificate",
+      "type": "discharge_summary",
+      "text": "ORANGE CITY MEDICAL CENTRE - Department of Medicine\nDISCHARGE CERTIFICATE\n\nThis is to certify that Vikram Singh, 38 years, male, was admitted to this hospital on 2026-10-01 and discharged on 2026-10-03.\nDiagnosis: Chikungunya fever.\nTreatment given: Symptomatic treatment, IV fluids for 1 day.\nHe is advised rest for 10 days and review in the outpatient department.\n\nSigned: Dr. Rakesh Kapoor\nRegistration No. OCMC-1180"
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Vikram Singh",
+      "hospital_name": "Orange City Medical Centre",
+      "invoice_number": "OCMC-26-10-0045",
+      "admission_date": "2026-10-01",
+      "discharge_date": "2026-10-03",
+      "total_amount": 8800,
+      "line_items": [
+        3600,
+        2100,
+        1900,
+        1200
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "ready_for_review"
+  }
+}

@@ -1,0 +1,478 @@
+{
+  "request": {
+    "form": {
+      "patient_name": "Imran Qureshi",
+      "policy_number": "POL-26-0019",
+      "hospital_name": "Pink City Valley Hospital",
+      "admission_date": "2026-09-12",
+      "discharge_date": "2026-09-16",
+      "total_amount": 12100
+    },
+    "sources": [
+      {
+        "name": "Money receipt",
+        "type": "hospital_bill",
+        "text": "Pink City Valley Hospital\nTonk Road, Jaipur 302018\nMONEY RECEIPT / CASH MEMO\nMemo No. PCV/2026/09/2560\nDate: 16 Sep 2026\nReceived with thanks from: Imran Qureshi (Patient ID PCV-2511)\nAdmitted: 13 Sep 2026    Released: 16 Sep 2026\nDescription of charges:\n  - Bed (Male ward) (3 days) ........ ₹ 4,500.00/-\n  - Medicines ........ ₹ 3,700.00/-\n  - CBC, NS1, SGPT ........ ₹ 1,650.00/-\n  - Doctor visit (3 visits) ........ ₹ 2,250.00/-\nGrand Total ........ ₹ 12,100.00/-\n\nAuthorised signature: ____________\nThank you for choosing Pink City Valley Hospital"
+      },
+      {
+        "name": "Discharge summary",
+        "type": "discharge_summary",
+        "text": "Pink City Valley Hospital\nTonk Road, Jaipur 302018\nDISCHARGE SUMMARY\n\nPatient: Imran Qureshi    Age/Sex: 36/M    Hospital ID: PCV-2511\nConsultant: Dr. Anil Thakur (Medicine)\nDate of Admission: 13th September, 2026\nDate of Discharge: 16th September, 2026\nDiagnosis: Dengue fever (NS1 positive) with thrombocytopenia\nCourse in hospital: Managed with IV fluids and paracetamol. Platelet count monitored daily; lowest 48,000/cumm, recovered to 1,10,000/cumm.\nCondition at discharge: Stable, afebrile, taking oral diet.\nAdvice on discharge: Continue medicines as prescribed. Plenty of oral fluids. Avoid heavy work for 2 weeks.\nFollow-up: OPD after 7 days with reports."
+      }
+    ],
+    "policy": {
+      "policy_number": "POL-26-0019",
+      "holder_name": "Imran Qureshi",
+      "start_date": "2026-01-01",
+      "end_date": "2026-12-31"
+    }
+  },
+  "response": {
+    "facts": [
+      {
+        "field": "patient_name",
+        "value": "Imran Qureshi",
+        "provenance": "claimant_form",
+        "source": "claim_form",
+        "evidence": null
+      },
+      {
+        "field": "policy_number",
+        "value": "POL-26-0019",
+        "provenance": "claimant_form",
+        "source": "claim_form",
+        "evidence": null
+      },
+      {
+        "field": "hospital_name",
+        "value": "Pink City Valley Hospital",
+        "provenance": "claimant_form",
+        "source": "claim_form",
+        "evidence": null
+      },
+      {
+        "field": "admission_date",
+        "value": "2026-09-12",
+        "provenance": "claimant_form",
+        "source": "claim_form",
+        "evidence": null
+      },
+      {
+        "field": "discharge_date",
+        "value": "2026-09-16",
+        "provenance": "claimant_form",
+        "source": "claim_form",
+        "evidence": null
+      },
+      {
+        "field": "total_amount",
+        "value": 12100.0,
+        "provenance": "claimant_form",
+        "source": "claim_form",
+        "evidence": null
+      },
+      {
+        "field": "document_type",
+        "value": "hospital_bill",
+        "provenance": "system_inferred",
+        "source": "Money receipt",
+        "evidence": null
+      },
+      {
+        "field": "patient_name",
+        "value": "Imran Qureshi",
+        "provenance": "claimant_document",
+        "source": "Money receipt",
+        "evidence": "Received with thanks from: Imran Qureshi"
+      },
+      {
+        "field": "hospital_name",
+        "value": "Pink City Valley Hospital",
+        "provenance": "claimant_document",
+        "source": "Money receipt",
+        "evidence": "Pink City Valley Hospital"
+      },
+      {
+        "field": "invoice_number",
+        "value": "PCV/2026/09/2560",
+        "provenance": "claimant_document",
+        "source": "Money receipt",
+        "evidence": "Memo No. PCV/2026/09/2560"
+      },
+      {
+        "field": "admission_date",
+        "value": "2026-09-13",
+        "provenance": "claimant_document",
+        "source": "Money receipt",
+        "evidence": "Admitted: 13 Sep 2026"
+      },
+      {
+        "field": "discharge_date",
+        "value": "2026-09-16",
+        "provenance": "claimant_document",
+        "source": "Money receipt",
+        "evidence": "Released: 16 Sep 2026"
+      },
+      {
+        "field": "total_amount",
+        "value": 12100.0,
+        "provenance": "claimant_document",
+        "source": "Money receipt",
+        "evidence": "Grand Total ........ ₹ 12,100.00/-"
+      },
+      {
+        "field": "line_items",
+        "value": [
+          {
+            "description": "Bed (Male ward) (3 days)",
+            "amount": 4500.0,
+            "category": "room",
+            "category_provenance": "system_inferred",
+            "evidence": "Bed (Male ward) (3 days) ........ ₹ 4,500.00/-"
+          },
+          {
+            "description": "Medicines",
+            "amount": 3700.0,
+            "category": "medicine",
+            "category_provenance": "system_inferred",
+            "evidence": "Medicines ........ ₹ 3,700.00/-"
+          },
+          {
+            "description": "CBC, NS1, SGPT",
+            "amount": 1650.0,
+            "category": "diagnostics",
+            "category_provenance": "system_inferred",
+            "evidence": "CBC, NS1, SGPT ........ ₹ 1,650.00/-"
+          },
+          {
+            "description": "Doctor visit (3 visits)",
+            "amount": 2250.0,
+            "category": "consultation",
+            "category_provenance": "system_inferred",
+            "evidence": "Doctor visit (3 visits) ........ ₹ 2,250.00/-"
+          }
+        ],
+        "provenance": "claimant_document",
+        "source": "Money receipt",
+        "evidence": null
+      },
+      {
+        "field": "document_type",
+        "value": "discharge_summary",
+        "provenance": "system_inferred",
+        "source": "Discharge summary",
+        "evidence": null
+      },
+      {
+        "field": "patient_name",
+        "value": "Imran Qureshi",
+        "provenance": "claimant_document",
+        "source": "Discharge summary",
+        "evidence": "Patient: Imran Qureshi"
+      },
+      {
+        "field": "hospital_name",
+        "value": "Pink City Valley Hospital",
+        "provenance": "claimant_document",
+        "source": "Discharge summary",
+        "evidence": "Pink City Valley Hospital"
+      },
+      {
+        "field": "admission_date",
+        "value": "2026-09-13",
+        "provenance": "claimant_document",
+        "source": "Discharge summary",
+        "evidence": "Date of Admission: 13th September, 2026"
+      },
+      {
+        "field": "discharge_date",
+        "value": "2026-09-16",
+        "provenance": "claimant_document",
+        "source": "Discharge summary",
+        "evidence": "Date of Discharge: 16th September, 2026"
+      }
+    ],
+    "fields": {
+      "patient_name": {
+        "field": "patient_name",
+        "status": "provided",
+        "value": "Imran Qureshi",
+        "provenance": [
+          "claimant_document",
+          "claimant_form"
+        ],
+        "sources": [
+          "claim_form",
+          "Money receipt",
+          "Discharge summary"
+        ]
+      },
+      "hospital_name": {
+        "field": "hospital_name",
+        "status": "provided",
+        "value": "Pink City Valley Hospital",
+        "provenance": [
+          "claimant_document",
+          "claimant_form"
+        ],
+        "sources": [
+          "claim_form",
+          "Money receipt",
+          "Discharge summary"
+        ]
+      },
+      "invoice_number": {
+        "field": "invoice_number",
+        "status": "provided",
+        "value": "PCV/2026/09/2560",
+        "provenance": [
+          "claimant_document"
+        ],
+        "sources": [
+          "Money receipt"
+        ]
+      },
+      "admission_date": {
+        "field": "admission_date",
+        "status": "conflicting",
+        "value": null,
+        "provenance": [
+          "claimant_document",
+          "claimant_form"
+        ],
+        "sources": [
+          "claim_form",
+          "Money receipt",
+          "Discharge summary"
+        ]
+      },
+      "discharge_date": {
+        "field": "discharge_date",
+        "status": "provided",
+        "value": "2026-09-16",
+        "provenance": [
+          "claimant_document",
+          "claimant_form"
+        ],
+        "sources": [
+          "claim_form",
+          "Money receipt",
+          "Discharge summary"
+        ]
+      },
+      "total_amount": {
+        "field": "total_amount",
+        "status": "provided",
+        "value": 12100.0,
+        "provenance": [
+          "claimant_document",
+          "claimant_form"
+        ],
+        "sources": [
+          "claim_form",
+          "Money receipt"
+        ]
+      },
+      "line_items": {
+        "field": "line_items",
+        "status": "provided",
+        "value": [
+          {
+            "description": "Bed (Male ward) (3 days)",
+            "amount": 4500.0,
+            "category": "room",
+            "category_provenance": "system_inferred",
+            "evidence": "Bed (Male ward) (3 days) ........ ₹ 4,500.00/-"
+          },
+          {
+            "description": "Medicines",
+            "amount": 3700.0,
+            "category": "medicine",
+            "category_provenance": "system_inferred",
+            "evidence": "Medicines ........ ₹ 3,700.00/-"
+          },
+          {
+            "description": "CBC, NS1, SGPT",
+            "amount": 1650.0,
+            "category": "diagnostics",
+            "category_provenance": "system_inferred",
+            "evidence": "CBC, NS1, SGPT ........ ₹ 1,650.00/-"
+          },
+          {
+            "description": "Doctor visit (3 visits)",
+            "amount": 2250.0,
+            "category": "consultation",
+            "category_provenance": "system_inferred",
+            "evidence": "Doctor visit (3 visits) ........ ₹ 2,250.00/-"
+          }
+        ],
+        "provenance": [
+          "claimant_document"
+        ],
+        "sources": [
+          "Money receipt"
+        ]
+      }
+    },
+    "missing_fields": [],
+    "conflicts": [
+      {
+        "field": "admission_date",
+        "values": [
+          {
+            "value": "2026-09-12",
+            "source": "claim_form",
+            "provenance": "claimant_form",
+            "evidence": null
+          },
+          {
+            "value": "2026-09-13",
+            "source": "Money receipt",
+            "provenance": "claimant_document",
+            "evidence": "Admitted: 13 Sep 2026"
+          },
+          {
+            "value": "2026-09-13",
+            "source": "Discharge summary",
+            "provenance": "claimant_document",
+            "evidence": "Date of Admission: 13th September, 2026"
+          }
+        ],
+        "severity": "high"
+      }
+    ],
+    "validation_flags": [],
+    "recommendations": {
+      "triage_category": {
+        "value": "conflicting_information",
+        "reason": "Sources disagree on: admission date.",
+        "provenance": "system_inferred"
+      },
+      "next_steps": [
+        {
+          "action": "Ask the claimant to confirm the admission date: the claim form says 2026-09-12; \"Money receipt\" says 2026-09-13; \"Discharge summary\" says 2026-09-13.",
+          "reason": "The sources disagree and the system does not choose between them.",
+          "provenance": "system_inferred"
+        }
+      ]
+    },
+    "extractions": [
+      {
+        "source": "Money receipt",
+        "source_type": "hospital_bill",
+        "detected_type": "hospital_bill",
+        "model": "gemini-3.1-flash-lite",
+        "prompt_version": "extraction_v3",
+        "fields": {
+          "patient_name": {
+            "value": "Imran Qureshi",
+            "raw": "Imran Qureshi",
+            "evidence": "Received with thanks from: Imran Qureshi"
+          },
+          "hospital_name": {
+            "value": "Pink City Valley Hospital",
+            "raw": "Pink City Valley Hospital",
+            "evidence": "Pink City Valley Hospital"
+          },
+          "invoice_number": {
+            "value": "PCV/2026/09/2560",
+            "raw": "PCV/2026/09/2560",
+            "evidence": "Memo No. PCV/2026/09/2560"
+          },
+          "admission_date": {
+            "value": "2026-09-13",
+            "raw": "13 Sep 2026",
+            "evidence": "Admitted: 13 Sep 2026"
+          },
+          "discharge_date": {
+            "value": "2026-09-16",
+            "raw": "16 Sep 2026",
+            "evidence": "Released: 16 Sep 2026"
+          },
+          "total_amount": {
+            "value": 12100.0,
+            "raw": "12,100.00",
+            "evidence": "Grand Total ........ ₹ 12,100.00/-"
+          }
+        },
+        "line_items": [
+          {
+            "description": "Bed (Male ward) (3 days)",
+            "amount": 4500.0,
+            "category": "room",
+            "category_provenance": "system_inferred",
+            "evidence": "Bed (Male ward) (3 days) ........ ₹ 4,500.00/-"
+          },
+          {
+            "description": "Medicines",
+            "amount": 3700.0,
+            "category": "medicine",
+            "category_provenance": "system_inferred",
+            "evidence": "Medicines ........ ₹ 3,700.00/-"
+          },
+          {
+            "description": "CBC, NS1, SGPT",
+            "amount": 1650.0,
+            "category": "diagnostics",
+            "category_provenance": "system_inferred",
+            "evidence": "CBC, NS1, SGPT ........ ₹ 1,650.00/-"
+          },
+          {
+            "description": "Doctor visit (3 visits)",
+            "amount": 2250.0,
+            "category": "consultation",
+            "category_provenance": "system_inferred",
+            "evidence": "Doctor visit (3 visits) ........ ₹ 2,250.00/-"
+          }
+        ],
+        "guard_events": [],
+        "error": null
+      },
+      {
+        "source": "Discharge summary",
+        "source_type": "discharge_summary",
+        "detected_type": "discharge_summary",
+        "model": "gemini-3.1-flash-lite",
+        "prompt_version": "extraction_v3",
+        "fields": {
+          "patient_name": {
+            "value": "Imran Qureshi",
+            "raw": "Imran Qureshi",
+            "evidence": "Patient: Imran Qureshi"
+          },
+          "hospital_name": {
+            "value": "Pink City Valley Hospital",
+            "raw": "Pink City Valley Hospital",
+            "evidence": "Pink City Valley Hospital"
+          },
+          "invoice_number": {
+            "value": null,
+            "raw": null,
+            "evidence": null
+          },
+          "admission_date": {
+            "value": "2026-09-13",
+            "raw": "13th September, 2026",
+            "evidence": "Date of Admission: 13th September, 2026"
+          },
+          "discharge_date": {
+            "value": "2026-09-16",
+            "raw": "16th September, 2026",
+            "evidence": "Date of Discharge: 16th September, 2026"
+          },
+          "total_amount": {
+            "value": null,
+            "raw": null,
+            "evidence": null
+          }
+        },
+        "line_items": [],
+        "guard_events": [],
+        "error": null
+      }
+    ],
+    "model": "gemini-3.1-flash-lite",
+    "prompt_version": "extraction_v3",
+    "analyzed_at": "2026-10-10T18:01:11.254472Z"
+  }
+}

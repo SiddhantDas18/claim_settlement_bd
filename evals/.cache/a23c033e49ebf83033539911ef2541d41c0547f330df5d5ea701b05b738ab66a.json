@@ -1,0 +1,28 @@
+{
+  "document_type": "other",
+  "patient_name": {
+    "value": "Mohan Das",
+    "evidence": "Health claim - Mohan Das"
+  },
+  "hospital_name": {
+    "value": "Marina City Medical Centre",
+    "evidence": "treatment at Marina City Medical Centre"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "05/07/2026",
+    "evidence": "I was admitted on 05/07/2026"
+  },
+  "discharge_date": {
+    "value": "09/07/2026",
+    "evidence": "discharged on 09/07/2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

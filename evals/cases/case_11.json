@@ -1,0 +1,56 @@
+{
+  "id": "case_11",
+  "category": "clean",
+  "description": "Gallbladder surgery, amount above one lakh (1,24,600). Receipt bill + certificate + lab report.",
+  "policy": {
+    "policy_number": "POL-26-0011",
+    "holder_name": "Suresh Patel",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Suresh Patel",
+    "policy_number": "POL-26-0011",
+    "hospital_name": "Sahyadri Care Hospital Pvt. Ltd.",
+    "admission_date": "2026-08-25",
+    "discharge_date": "2026-08-29",
+    "total_amount": 124600
+  },
+  "sources": [
+    {
+      "name": "Money receipt",
+      "type": "hospital_bill",
+      "text": "Sahyadri Care Hospital Pvt. Ltd.\nSurvey No. 12, Karve Road, Kothrud, Pune 411038\nMONEY RECEIPT / CASH MEMO\nMemo No. SCH/IPD/2026/03877\nDate: 29 Aug 2026\nReceived with thanks from: Suresh Patel (Patient ID 2026-091550)\nAdmitted: 25 Aug 2026    Released: 29 Aug 2026\nDescription of charges:\n  - Cabin rent (4 days) ........ ₹ 16,000.00/-\n  - Laparoscopic cholecystectomy package ........ ₹ 72,000.00/-\n  - Anaesthesia charge ........ ₹ 12,000.00/-\n  - Medicines & consumables ........ ₹ 18,400.00/-\n  - USG, LFT, CBC ........ ₹ 6,200.00/-\nGrand Total ........ ₹ 1,24,600.00/-\n\nAuthorised signature: ____________\nThank you for choosing Sahyadri Care Hospital Pvt. Ltd."
+    },
+    {
+      "name": "Discharge certificate",
+      "type": "discharge_summary",
+      "text": "SAHYADRI CARE HOSPITAL PVT. LTD. - Department of Hepatobiliary Surgery\nDISCHARGE CERTIFICATE\n\nThis is to certify that Suresh Patel, 47 years, male, was admitted to this hospital on 25th August, 2026 and discharged on 29th August, 2026.\nDiagnosis: Symptomatic cholelithiasis.\nTreatment given: Laparoscopic cholecystectomy on 26/08/2026.\nHe is advised rest for 10 days and review in the outpatient department.\n\nSigned: Dr. Harish Sarkar\nRegistration No. 2026-091550"
+    },
+    {
+      "name": "Lab report",
+      "type": "lab_report",
+      "text": "Sahyadri Care Hospital Pvt. Ltd. - Department of Laboratory Medicine\nPatient Name: Suresh Patel    Age: 47    Sex: M    Lab ID: L-2026-091550\nSample collected: 25/08/2026    Report date: 25/08/2026\nReferred by: Dr. Harish Sarkar\n\nTest                              Result              Reference range\nSerum bilirubin                   1.1 mg/dL           0.3-1.2\nALT (SGPT)                        48 U/L              <41\nHaemoglobin                       13.4 g/dL           13.0-17.0\n\nChecked by: Consultant Pathologist"
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Suresh Patel",
+      "hospital_name": "Sahyadri Care Hospital Pvt. Ltd.",
+      "invoice_number": "SCH/IPD/2026/03877",
+      "admission_date": "2026-08-25",
+      "discharge_date": "2026-08-29",
+      "total_amount": 124600,
+      "line_items": [
+        16000,
+        72000,
+        12000,
+        18400,
+        6200
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "ready_for_review"
+  }
+}

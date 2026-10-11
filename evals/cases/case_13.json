@@ -1,0 +1,56 @@
+{
+  "id": "case_13",
+  "category": "clean",
+  "description": "Cardiac observation. Receipt bill + discharge summary + email.",
+  "policy": {
+    "policy_number": "POL-26-0013",
+    "holder_name": "Mohan Das",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "patient_name": "Mohan Das",
+    "policy_number": "POL-26-0013",
+    "hospital_name": "Marina City Medical Centre",
+    "admission_date": "2026-07-05",
+    "discharge_date": "2026-07-09",
+    "total_amount": 43300
+  },
+  "sources": [
+    {
+      "name": "Money receipt",
+      "type": "hospital_bill",
+      "text": "Marina City Medical Centre\nAnna Salai, Teynampet, Chennai 600018\nMONEY RECEIPT / CASH MEMO\nMemo No. MCMC/26/0705-042\nDate: 09 Jul 2026\nReceived with thanks from: Mohan Das (Patient ID MC-31877)\nAdmitted: 05 Jul 2026    Released: 09 Jul 2026\nDescription of charges:\n  - CCU bed (2 days) ........ ₹ 12,000.00/-\n  - Cabin (2 days) ........ ₹ 7,000.00/-\n  - ECG, Troponin I, Echo ........ ₹ 8,400.00/-\n  - Medicines ........ ₹ 9,900.00/-\n  - Cardiologist visit (4 visits) ........ ₹ 6,000.00/-\nGrand Total ........ ₹ 43,300.00/-\n\nAuthorised signature: ____________\nThank you for choosing Marina City Medical Centre"
+    },
+    {
+      "name": "Discharge summary",
+      "type": "discharge_summary",
+      "text": "Marina City Medical Centre\nAnna Salai, Teynampet, Chennai 600018\nDISCHARGE SUMMARY\n\nPatient: Mohan Das    Age/Sex: 61/M    Hospital ID: MC-31877\nConsultant: Dr. Abhay Mamtani (Cardiology)\nDate of Admission: 05 Jul 2026\nDate of Discharge: 09 Jul 2026\nDiagnosis: Unstable angina\nCourse in hospital: Observed in CCU, anticoagulation and anti-anginal drugs. Advised elective angiogram.\nCondition at discharge: Stable, afebrile, taking oral diet.\nAdvice on discharge: Continue medicines as prescribed. Plenty of oral fluids. Avoid heavy work for 2 weeks.\nFollow-up: OPD after 7 days with reports."
+    },
+    {
+      "name": "Claimant email",
+      "type": "claimant_email",
+      "text": "From: mohan.das@example.com\nTo: claims@insurer.example\nSubject: Health claim - Mohan Das - POL-26-0013\n\nDear Sir/Madam,\nI am writing to claim for my treatment at Marina City Medical Centre. I was admitted on 05/07/2026 and discharged on 09/07/2026. My policy number is POL-26-0013. I have attached the documents from the hospital.\nPlease let me know if anything else is needed.\n\nRegards,\nMohan Das\nMobile: +91 9803648267"
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Mohan Das",
+      "hospital_name": "Marina City Medical Centre",
+      "invoice_number": "MCMC/26/0705-042",
+      "admission_date": "2026-07-05",
+      "discharge_date": "2026-07-09",
+      "total_amount": 43300,
+      "line_items": [
+        12000,
+        7000,
+        8400,
+        9900,
+        6000
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "ready_for_review"
+  }
+}

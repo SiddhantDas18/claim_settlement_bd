@@ -1,0 +1,55 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595 842] /Resources << /Font << /F1 4 0 R >> >> /Contents 5 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Courier /Encoding /WinAnsiEncoding >>
+endobj
+5 0 obj
+<< /Length 1164 >>
+stream
+BT
+/F1 9 Tf
+12 TL
+40 800 Td
+(SAHYADRI CARE HOSPITAL PVT. LTD.) Tj T*
+(Survey No. 12, Karve Road, Kothrud, Pune 411038 | Phone: 020-25431100) Tj T*
+(IN-PATIENT FINAL BILL) Tj T*
+() Tj T*
+(Invoice No: SCH/IPD/2026/04512        Bill Date: 15/09/2026) Tj T*
+(Patient Name: Rahul Sharma        Reg. No: 2026-088123) Tj T*
+(Admission Date: 12/09/2026        Discharge Date: 15/09/2026) Tj T*
+(Consultant: Dr. A. K. Mehta) Tj T*
+(----------------------------------------------------------------) Tj T*
+(SL  Particulars                           Qty       Amount \(Rs.\)) Tj T*
+(1   Bed charge \(General Ward\)             3 days    9,000.00) Tj T*
+(2   Medicine & consumables                          4,250.00) Tj T*
+(3   CBC, NS1 antigen, SGPT                          1,200.00) Tj T*
+(4   Consultation fee                      2 visits  2,000.00) Tj T*
+(----------------------------------------------------------------) Tj T*
+(                                 Total Amount \(Rs.\): 16,450.00) Tj T*
+(In words: Rupees Sixteen Thousand Four Hundred Fifty Only) Tj T*
+(Paid: 16,450.00    Due: 0.00) Tj T*
+(Cashier: R. Mondal    This is a computer generated bill.) Tj T*
+ET
+endstream
+endobj
+xref
+0 6
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000241 00000 n 
+0000000336 00000 n 
+trailer
+<< /Size 6 /Root 1 0 R >>
+startxref
+1552
+%%EOF

@@ -1,0 +1,53 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "Farah Siddiqui",
+    "evidence": "Received with thanks from: Farah Siddiqui"
+  },
+  "hospital_name": {
+    "value": "Sahyadri Care Hospital Pvt. Ltd.",
+    "evidence": "Sahyadri Care Hospital Pvt. Ltd."
+  },
+  "invoice_number": {
+    "value": "SCH/IPD/2026/04790",
+    "evidence": "Memo No. SCH/IPD/2026/04790"
+  },
+  "admission_date": {
+    "value": "20 Sep 2026",
+    "evidence": "Admitted: 20 Sep 2026"
+  },
+  "discharge_date": {
+    "value": "22 Sep 2026",
+    "evidence": "Released: 22 Sep 2026"
+  },
+  "total_amount": {
+    "value": "Rupees Twenty Two Thousand Five Hundred Only",
+    "evidence": "Total payable (in words): Rupees Twenty Two Thousand Five Hundred Only"
+  },
+  "line_items": [
+    {
+      "description": "Bed charge (2 days)",
+      "category": "room",
+      "amount": "6,000.00",
+      "evidence": "- Bed charge (2 days) ........ ₹ 6,000.00/-"
+    },
+    {
+      "description": "Medicines",
+      "category": "medicine",
+      "amount": "9,200.00",
+      "evidence": "- Medicines ........ ₹ 9,200.00/-"
+    },
+    {
+      "description": "MRI brain",
+      "category": "diagnostics",
+      "amount": "6,500.00",
+      "evidence": "- MRI brain ........ ₹ 6,500.00/-"
+    },
+    {
+      "description": "Neurologist visit",
+      "category": "consultation",
+      "amount": "800.00",
+      "evidence": "- Neurologist visit ........ ₹ 800.00/-"
+    }
+  ]
+}

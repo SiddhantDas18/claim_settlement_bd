@@ -1,0 +1,28 @@
+{
+  "document_type": "prescription",
+  "patient_name": {
+    "value": "Kavya Menon",
+    "evidence": "Pt: Kavya Menon"
+  },
+  "hospital_name": {
+    "value": "Pink City Valley Hospital",
+    "evidence": "Pink City Valley Hospital"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": null,
+    "evidence": null
+  },
+  "discharge_date": {
+    "value": null,
+    "evidence": null
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

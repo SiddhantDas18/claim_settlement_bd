@@ -1,0 +1,53 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "Sanjay Chauhan",
+    "evidence": "Patient Name: Sanjay Chauhan"
+  },
+  "hospital_name": {
+    "value": "LAKEVIEW MULTISPECIALITY HOSPITAL",
+    "evidence": "LAKEVIEW MULTISPECIALITY HOSPITAL"
+  },
+  "invoice_number": {
+    "value": "LMH-INV-779560",
+    "evidence": "Invoice No: LMH-INV-779560"
+  },
+  "admission_date": {
+    "value": "08/06/2026",
+    "evidence": "Admission Date: 08/06/2026"
+  },
+  "discharge_date": {
+    "value": "11/06/2026",
+    "evidence": "Discharge Date: 11/06/2026"
+  },
+  "total_amount": {
+    "value": "25,300.00",
+    "evidence": "Total Amount (Rs.): 25,300.00"
+  },
+  "line_items": [
+    {
+      "description": "Cabin rent",
+      "category": "room",
+      "amount": "10,500.00",
+      "evidence": "1   Cabin rent                            3 days    10,500.00"
+    },
+    {
+      "description": "Medicines",
+      "category": "medicine",
+      "amount": "6,200.00",
+      "evidence": "2   Medicines                                       6,200.00"
+    },
+    {
+      "description": "Endoscopy",
+      "category": "diagnostics",
+      "amount": "4,600.00",
+      "evidence": "3   Endoscopy                                       4,600.00"
+    },
+    {
+      "description": "Doctor visit",
+      "category": "consultation",
+      "amount": "2,000.00",
+      "evidence": "4   Doctor visit                          2 visits  2,000.00"
+    }
+  ]
+}

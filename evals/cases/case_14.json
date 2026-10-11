@@ -1,0 +1,44 @@
+{
+  "id": "case_14",
+  "category": "clean",
+  "description": "Viral fever. Claim form empty except policy number: every fact must come from documents.",
+  "policy": {
+    "policy_number": "POL-26-0014",
+    "holder_name": "Pooja Bhatt",
+    "start_date": "2026-01-01",
+    "end_date": "2026-12-31"
+  },
+  "form": {
+    "policy_number": "POL-26-0014"
+  },
+  "sources": [
+    {
+      "name": "Hospital bill",
+      "type": "hospital_bill",
+      "text": "BRAHMAPUTRA GREEN VIEW HOSPITAL   GUWAHATI 781005\nBILL NO : BGV/MR/26/2875     DATE : 30-MAY-2026\nNAME OF PATIENT : POOJA BHATT    AGE : 40 Y    SEX : FEMALE\nDATE OF ADMISSION : 28-MAY-2026    DATE OF DISCHARGE : 30-MAY-2026\nPARTICULARS                                 AMOUNT\nBED CHARGE 2 DAYS                           5,600.00\nMEDICINE & SALINE                           2,750.00\nCBC, MP, WIDAL                              1,350.00\nNET TOTAL                                   9,700.00\nRECEIVED BY : ACCOUNTS SECTION"
+    },
+    {
+      "name": "Discharge certificate",
+      "type": "discharge_summary",
+      "text": "BRAHMAPUTRA GREEN VIEW HOSPITAL - Department of Medicine\nDISCHARGE CERTIFICATE\n\nThis is to certify that Pooja Bhatt, 40 years, female, was admitted to this hospital on 28-May-2026 and discharged on 30-May-2026.\nDiagnosis: Acute viral fever.\nTreatment given: Supportive treatment with IV fluids and antipyretics.\nShe is advised rest for 10 days and review in the outpatient department.\n\nSigned: Dr. Lata Nair\nRegistration No. BGV-11455"
+    }
+  ],
+  "expected": {
+    "fields": {
+      "patient_name": "Pooja Bhatt",
+      "hospital_name": "Brahmaputra Green View Hospital",
+      "invoice_number": "BGV/MR/26/2875",
+      "admission_date": "2026-05-28",
+      "discharge_date": "2026-05-30",
+      "total_amount": 9700,
+      "line_items": [
+        5600,
+        2750,
+        1350
+      ]
+    },
+    "missing_fields": [],
+    "conflicts": [],
+    "triage_category": "ready_for_review"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "document_type": "discharge_summary",
+  "patient_name": {
+    "value": "Kavya Menon",
+    "evidence": "Patient: Kavya Menon"
+  },
+  "hospital_name": {
+    "value": "Pink City Valley Hospital",
+    "evidence": "Pink City Valley Hospital"
+  },
+  "invoice_number": {
+    "value": null,
+    "evidence": null
+  },
+  "admission_date": {
+    "value": "21st July, 2026",
+    "evidence": "Date of Admission: 21st July, 2026"
+  },
+  "discharge_date": {
+    "value": "23rd July, 2026",
+    "evidence": "Date of Discharge: 23rd July, 2026"
+  },
+  "total_amount": {
+    "value": null,
+    "evidence": null
+  },
+  "line_items": []
+}

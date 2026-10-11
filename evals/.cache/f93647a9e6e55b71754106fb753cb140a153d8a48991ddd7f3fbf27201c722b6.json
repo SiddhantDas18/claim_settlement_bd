@@ -1,0 +1,59 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "Venkatesh Iyer",
+    "evidence": "Received with thanks from: Venkatesh Iyer (Patient ID BGV-11902)"
+  },
+  "hospital_name": {
+    "value": "Brahmaputra Green View Hospital",
+    "evidence": "Brahmaputra Green View Hospital"
+  },
+  "invoice_number": {
+    "value": "BGV/MR/26/3310",
+    "evidence": "Memo No. BGV/MR/26/3310"
+  },
+  "admission_date": {
+    "value": "14 Feb 2026",
+    "evidence": "Admitted: 14 Feb 2026"
+  },
+  "discharge_date": {
+    "value": "19 Feb 2026",
+    "evidence": "Released: 19 Feb 2026"
+  },
+  "total_amount": {
+    "value": "38,600.00",
+    "evidence": "Grand Total ........ ₹ 38,600.00/-"
+  },
+  "line_items": [
+    {
+      "description": "Cabin charge (5 days)",
+      "category": "room",
+      "amount": "17,500.00",
+      "evidence": "Cabin charge (5 days) ........ ₹ 17,500.00/-"
+    },
+    {
+      "description": "Oxygen & nebulisation",
+      "category": "other",
+      "amount": "3,200.00",
+      "evidence": "Oxygen & nebulisation ........ ₹ 3,200.00/-"
+    },
+    {
+      "description": "Medicines & IV antibiotics",
+      "category": "medicine",
+      "amount": "11,400.00",
+      "evidence": "Medicines & IV antibiotics ........ ₹ 11,400.00/-"
+    },
+    {
+      "description": "Chest X-ray, CBC, CRP",
+      "category": "diagnostics",
+      "amount": "2,900.00",
+      "evidence": "Chest X-ray, CBC, CRP ........ ₹ 2,900.00/-"
+    },
+    {
+      "description": "Physician round (5 visits)",
+      "category": "consultation",
+      "amount": "3,600.00",
+      "evidence": "Physician round (5 visits) ........ ₹ 3,600.00/-"
+    }
+  ]
+}

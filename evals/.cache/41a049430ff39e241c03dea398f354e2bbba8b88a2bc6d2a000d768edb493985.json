@@ -1,0 +1,59 @@
+{
+  "document_type": "hospital_bill",
+  "patient_name": {
+    "value": "ARJUN REDDY",
+    "evidence": "NAME OF PATIENT : ARJUN REDDY"
+  },
+  "hospital_name": {
+    "value": "MARINA CITY MEDICAL CENTRE",
+    "evidence": "MARINA CITY MEDICAL CENTRE"
+  },
+  "invoice_number": {
+    "value": "MCMC/26/0623-117",
+    "evidence": "BILL NO : MCMC/26/0623-117"
+  },
+  "admission_date": {
+    "value": "20-JUN-2026",
+    "evidence": "DATE OF ADMISSION : 20-JUN-2026"
+  },
+  "discharge_date": {
+    "value": "24-JUN-2026",
+    "evidence": "DATE OF DISCHARGE : 24-JUN-2026"
+  },
+  "total_amount": {
+    "value": "79,950.00",
+    "evidence": "NET TOTAL                                   79,950.00"
+  },
+  "line_items": [
+    {
+      "description": "CABIN RENT 4 DAYS",
+      "category": "room",
+      "amount": "14,000.00",
+      "evidence": "CABIN RENT 4 DAYS                           14,000.00"
+    },
+    {
+      "description": "SURGEON & OT CHARGE",
+      "category": "surgery",
+      "amount": "45,000.00",
+      "evidence": "SURGEON & OT CHARGE                         45,000.00"
+    },
+    {
+      "description": "ANAESTHESIA",
+      "category": "surgery",
+      "amount": "8,000.00",
+      "evidence": "ANAESTHESIA                                 8,000.00"
+    },
+    {
+      "description": "MEDICINE",
+      "category": "medicine",
+      "amount": "9,350.00",
+      "evidence": "MEDICINE                                    9,350.00"
+    },
+    {
+      "description": "PATHOLOGY & USG",
+      "category": "diagnostics",
+      "amount": "3,600.00",
+      "evidence": "PATHOLOGY & USG                             3,600.00"
+    }
+  ]
+}
