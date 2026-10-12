@@ -1,7 +1,126 @@
 # Claim Settlement: AI Claims Intake Assistant (Backend)
 
-FastAPI backend for a health-insurance claims app (India, INR). The React frontend lives in the sibling repo `../Claim_Settlement_FD`.
-Claim fields, checks and settlement rules: [docs/claim_rules.md](docs/claim_rules.md).
+FastAPI backend for an AI-assisted health-insurance claims intake app (India, INR). It reads the documents a claimant uploads, extracts the facts with exact quotes, marks what is missing, flags contradictions between sources, and recommends a triage for a human reviewer.
+The React frontend lives in the sibling repo [`Claim_Settlement_FD`](../Claim_Settlement_FD). Claim fields, checks and settlement rules: [docs/claim_rules.md](docs/claim_rules.md).
+
+| A claimant files a claim | A reviewer checks, approves and pays it |
+|---|---|
+| ![Claimant files a claim](docs/gifs/claimant_files_a_claim.gif) | ![Reviewer checks, approves and pays](docs/gifs/reviewer_checks_approves_pays.gif) |
+
+**Contents:** [Setup guide](#setup-guide-backend--frontend) · [Problem & approach](#problem--approach) · [Architecture](#architecture) · [Input/output schema](#input--output-schema) · [Evaluation](#how-to-run-the-evaluation) · [Results](#evaluation-results) · [Failure cases](#failure-cases--improvements) · [Screenshots](#screenshots) · [API overview](#api-overview-apiv1)
+
+## Setup guide (backend + frontend)
+
+You run two apps side by side: this backend (API on port 8000) and the frontend (web app on port 5173), plus a PostgreSQL database.
+
+```
+Scout_Claim/
+├── Claim_Settlement_BD/   ← this repo (FastAPI)
+└── Claim_Settlement_FD/   ← the frontend (React)
+```
+
+### 1. Prerequisites
+
+| Tool | Version | Check | Install |
+|---|---|---|---|
+| Python | 3.11 or newer | `python3 --version` | [python.org](https://www.python.org/downloads/) or `brew install python@3.12` |
+| Node.js | 20 or newer | `node --version` | [nodejs.org](https://nodejs.org/) or `brew install node` |
+| PostgreSQL | 14 or newer | `psql --version` | `brew install postgresql@16 && brew services start postgresql@16`, or Docker (below) |
+| Gemini API key | free | | [aistudio.google.com](https://aistudio.google.com) → Get API key |
+
+No other system packages are needed: the OCR models ship inside the `rapidocr` Python package.
+
+### 2. Database
+
+Create an empty database:
+
+```bash
+createdb claim_settlement
+```
+
+Or run PostgreSQL in Docker instead of installing it:
+
+```bash
+docker run -d --name claims-db -p 5432:5432 \
+  -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=claim_settlement postgres:16
+```
+
+A hosted database (Neon, Supabase, Render) works too: use its connection string with the `postgresql+psycopg://` prefix.
+
+### 3. Backend
+
+```bash
+cd Claim_Settlement_BD
+python3 -m venv .venv
+source .venv/bin/activate              # Windows: .venv\Scripts\activate
+pip install -r requirements.txt
+cp .env.example .env                   # then edit .env (table below)
+```
+
+| Variable in `.env` | What to put |
+|---|---|
+| `DATABASE_URL` | `postgresql+psycopg://USER:PASSWORD@localhost:5432/claim_settlement`. Homebrew Postgres: `postgresql+psycopg://YOUR_MAC_USERNAME@localhost:5432/claim_settlement` (no password). Docker command above: keep the default. |
+| `GEMINI_API_KEY` | Your key from AI Studio |
+| `GEMINI_MODEL` | `gemini-3.1-flash-lite` (the free tier of `gemini-2.5-flash` allows only 20 requests a day) |
+| `SECRET_KEY` | A long random value: `python3 -c "import secrets; print(secrets.token_hex(32))"` |
+| `ADMIN_EMAIL`, `ADMIN_PASSWORD` | The reviewer (admin) login, created automatically on first start |
+| `CORS_ORIGINS` | The frontend's address, default `["http://localhost:5173"]` |
+
+Start it:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+- http://localhost:8000/health should answer `{"status":"ok"}`
+- http://localhost:8000/docs shows every endpoint, which you can try in the browser
+
+On first start the backend creates the tables, the `uploads/` folder, the admin account and the default plan ("Standard Health", INR).
+
+### 4. Frontend
+
+In a second terminal:
+
+```bash
+cd Claim_Settlement_FD
+npm install
+cp .env.example .env                   # VITE_API_URL=http://localhost:8000
+npm run dev
+```
+
+Open **http://localhost:5173**.
+
+### 5. First walkthrough
+
+1. **Log in as the reviewer** with `ADMIN_EMAIL` / `ADMIN_PASSWORD` from the backend `.env`.
+2. **Create a claimant:** log out, click **"New claimant? Create an account"** and register (any email, password of 8+ characters).
+3. **Give the claimant a policy:** log in as the reviewer, open **Settings**, choose the claimant, enter a policy number such as `POL-26-0001`, click **Add policy**.
+4. **File a claim as the claimant:** **My claims → New claim** → enter the hospital, dates and total → upload the hospital bill and discharge summary (sample files: `evals/files/case_01_hospital_bill.pdf`, or any PDF/photo) → **Submit claim**. Submitting runs the AI check, which takes 5–60 seconds.
+5. **Review as the reviewer:** **Claims → To review** → open the claim → check *Needs attention* and *Claim details* → **Approve** → **To pay** → **Mark as paid**. The claimant now sees *Paid*.
+
+To try the AI on the 24 synthetic test claims without creating claims, open **Test cases** as the reviewer and press **Run AI check**.
+
+### 6. Tests and evaluation
+
+```bash
+source .venv/bin/activate
+python -m unittest discover tests                            # 51 tests, no network (Gemini is mocked)
+python evals/run_eval.py --prompt-version extraction_v3      # 24 synthetic claims; cached answers make re-runs free
+```
+
+### 7. Troubleshooting
+
+| Problem | Fix |
+|---|---|
+| Frontend says *"Cannot reach the server"* | The backend isn't running, or `VITE_API_URL` in the frontend `.env` points elsewhere. Restart `npm run dev` after editing `.env`. |
+| Browser console shows a CORS error | Add the frontend's address to `CORS_ORIGINS` in the backend `.env`, e.g. `["http://localhost:5173","http://localhost:3000"]`, then restart the backend. |
+| `connection refused` / `database "claim_settlement" does not exist` | Start PostgreSQL and run `createdb claim_settlement`; check `DATABASE_URL`. |
+| Settings error: `SECRET_KEY ... at least 32 characters` | Set `SECRET_KEY` in `.env` (command in the table above). |
+| Documents show *"could not be read by the AI"* | Check `GEMINI_API_KEY`. A `429 ... PerDay` message means the model's free daily quota is used up: wait or switch `GEMINI_MODEL`. |
+| The first upload of a photo is slow | RapidOCR loads its models on first use (a few seconds); later uploads are fast. |
+| Errors about missing columns after pulling changes | There are no migrations yet: `python -m app.reset_db --yes` recreates the tables (**deletes all data**). |
+| Claimant can't press **New claim** | They have no policy yet: add one under **Settings** as the reviewer. |
+| Port 8000 or 5173 already in use | `uvicorn app.main:app --reload --port 8001` (and set `VITE_API_URL=http://localhost:8001`), or `npm run dev -- --port 5174` (and add it to `CORS_ORIGINS`). |
 
 ## Problem & approach
 
@@ -685,53 +804,6 @@ _To be completed by the author._
 
 ### Data and privacy
 
-## Setup (new machine)
-
-Needs Python 3.11+ and PostgreSQL 14+. Python packages install through pip (OCR models ship inside the `rapidocr` wheel).
-
-```bash
-python3 -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
-cp .env.example .env               # then fill in DATABASE_URL, GEMINI_API_KEY, SECRET_KEY, ADMIN_EMAIL, ADMIN_PASSWORD
-```
-
-**Database (PostgreSQL).** Create an empty database and put its URL in `.env`:
-
-```bash
-createdb claim_settlement          # macOS Homebrew: brew install postgresql@16 && brew services start postgresql@16
-# .env: DATABASE_URL=postgresql+psycopg://USER:PASSWORD@localhost:5432/claim_settlement
-#       (local Homebrew Postgres: postgresql+psycopg://$(whoami)@localhost:5432/claim_settlement, no password)
-```
-
-Or with Docker: `docker run -d --name claims-db -e POSTGRES_PASSWORD=postgres -e POSTGRES_DB=claim_settlement -p 5432:5432 postgres:16` and keep the `.env.example` URL. A hosted database (Neon, Supabase, Render) works the same way: paste its connection string, with the `postgresql+psycopg://` prefix.
-
-Don't copy `.venv` between machines; recreate it.
-
-## Run
-
-API at http://localhost:8000. Interactive docs (try every endpoint in the browser) at http://localhost:8000/docs.
-
-```bash
-source .venv/bin/activate && uvicorn app.main:app --reload
-```
-
-On first start the app creates the tables in the PostgreSQL database, the `uploads/` folder, the admin account from `.env`, and a default plan ("Standard Health", INR).
-
-Frontend:
-
-```bash
-cd ../Claim_Settlement_FD && npm install && npm run dev
-```
-
-## Tests
-
-```bash
-python -m unittest discover tests
-```
-
-No network needed: Gemini is mocked. Covers the settlement math, the evidence guard, date/amount/name parsing, conflict detection, missing fields, triage rules and `POST /api/v1/analyze`.
-
 ## API overview (`/api/v1`)
 
 | Area | Endpoints |
@@ -745,12 +817,12 @@ No network needed: Gemini is mocked. Covers the settlement math, the evidence gu
 Claim flow: `draft` → `submitted` → `approved` (creates a pending payment) or `rejected` → `paid`.
 Uploading a document extracts its text straight away (PDF text or OCR). Submitting a claim runs the AI extraction and analysis and saves it on the claim.
 
-## First test, step by step (in `/docs`)
+## First test through the API only (in `/docs`)
 
 1. `POST /auth/login` with the admin email/password from `.env`; copy `access_token`, click **Authorize**, paste it.
-2. `POST /auth/register` a claimant (e.g. `rahim@example.com`); note its `id`.
+2. `POST /auth/register` a claimant (e.g. `rahul@example.com`); note its `id`.
 3. As admin, `POST /admin/policies` for that user with `plan_id: 1` and a period covering today.
-4. Log in as the claimant and authorize with their token. `POST /claims` with the policy id, treatment dates and items, e.g. `{"category": "room", "description": "Room", "amount": 9000, "quantity": 3}`.
+4. Log in as the claimant and authorize with their token. `POST /claims` with the policy id, hospital, treatment dates and the total, e.g. `{"policy_id": 1, "hospital_name": "Sahyadri Care Hospital", "treatment_start": "2026-09-12", "treatment_end": "2026-09-15", "claimed_amount": 16450}`. (Typed expense `items` are optional: without them the settlement uses the line items read from the bill.)
 5. `POST /claims/{id}/documents` twice: a `hospital_bill` and a `discharge_summary` (any JPG/PNG/PDF), then `POST /claims/{id}/submit`.
 6. As admin: `GET /admin/claims/{id}/analysis` for the intake analysis (facts, missing fields, conflicts, triage), `GET /admin/claims/{id}/calculation` for the settlement breakdown, then `POST /admin/claims/{id}/approve`.
 7. `GET /admin/payments/summary`, then `POST /admin/payments/{id}/mark-paid` with `{"method": "upi", "reference": "UPI123456"}`.
