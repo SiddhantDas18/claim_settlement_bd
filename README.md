@@ -7,7 +7,7 @@ The React frontend lives in the sibling repo [`Claim_Settlement_FD`](../Claim_Se
 |---|---|
 | ![Claimant files a claim](docs/gifs/claimant_files_a_claim.gif) | ![Reviewer checks, approves and pays](docs/gifs/reviewer_checks_approves_pays.gif) |
 
-**Contents:** [Setup guide](#setup-guide-backend--frontend) · [Problem & approach](#problem--approach) · [Architecture](#architecture) · [Input/output schema](#input--output-schema) · [Evaluation](#how-to-run-the-evaluation) · [Results](#evaluation-results) · [Failure cases](#failure-cases--improvements) · [Screenshots](#screenshots) · [API overview](#api-overview-apiv1)
+**Contents:** [Setup guide](#setup-guide-backend--frontend) · [Docker](#run-with-docker) · [Problem & approach](#problem--approach) · [Architecture](#architecture) · [Input/output schema](#input--output-schema) · [Evaluation](#how-to-run-the-evaluation) · [Results](#evaluation-results) · [Failure cases](#failure-cases--improvements) · [Screenshots](#screenshots) · [API overview](#api-overview-apiv1)
 
 ## Setup guide (backend + frontend)
 
@@ -93,12 +93,12 @@ Open **http://localhost:5173**.
 ### 5. First walkthrough
 
 1. **Log in as the reviewer** with `ADMIN_EMAIL` / `ADMIN_PASSWORD` from the backend `.env`.
-2. **Create a claimant:** log out, click **"New claimant? Create an account"** and register (any email, password of 8+ characters).
-3. **Give the claimant a policy:** log in as the reviewer, open **Settings**, choose the claimant, enter a policy number such as `POL-26-0001`, click **Add policy**.
+2. **Create a claimant:** log out (**☰** menu, top right → **Log out**), click **"New claimant? Create an account"** and register (any email, password of 8+ characters).
+3. **Give the claimant a policy:** log in as the reviewer, open the **☰** menu (top right) → **Settings**, choose the claimant, enter a policy number such as `POL-26-0001`, click **Add policy**.
 4. **File a claim as the claimant:** **My claims → New claim** → enter the hospital, dates and total → upload the hospital bill and discharge summary (sample files: `evals/files/case_01_hospital_bill.pdf`, or any PDF/photo) → **Submit claim**. Submitting runs the AI check, which takes 5–60 seconds.
 5. **Review as the reviewer:** **Claims → To review** → open the claim → check *Needs attention* and *Claim details* → **Approve** → **To pay** → **Mark as paid**. The claimant now sees *Paid*.
 
-To try the AI on the 24 synthetic test claims without creating claims, open **Test cases** as the reviewer and press **Run AI check**.
+To try the AI on the 24 synthetic test claims without creating claims, open **☰** menu → **Test cases** as the reviewer and press **Run AI check**.
 
 ### 6. Tests and evaluation
 
@@ -119,8 +119,51 @@ python evals/run_eval.py --prompt-version extraction_v3      # 24 synthetic clai
 | Documents show *"could not be read by the AI"* | Check `GEMINI_API_KEY`. A `429 ... PerDay` message means the model's free daily quota is used up: wait or switch `GEMINI_MODEL`. |
 | The first upload of a photo is slow | RapidOCR loads its models on first use (a few seconds); later uploads are fast. |
 | Errors about missing columns after pulling changes | There are no migrations yet: `python -m app.reset_db --yes` recreates the tables (**deletes all data**). |
-| Claimant can't press **New claim** | They have no policy yet: add one under **Settings** as the reviewer. |
+| Claimant can't press **New claim** | They have no policy yet: add one under **☰** menu → **Settings** as the reviewer. |
 | Port 8000 or 5173 already in use | `uvicorn app.main:app --reload --port 8001` (and set `VITE_API_URL=http://localhost:8001`), or `npm run dev -- --port 5174` (and add it to `CORS_ORIGINS`). |
+
+## Run with Docker
+
+Everything (database, backend, frontend) in containers: nothing to install except [Docker Desktop](https://www.docker.com/products/docker-desktop/).
+
+**Whole application** (from the folder that contains both repos and `docker-compose.yml`):
+
+```bash
+cp .env.example .env            # set GEMINI_API_KEY and SECRET_KEY (and ADMIN_EMAIL / ADMIN_PASSWORD)
+docker compose up --build       # first build takes a few minutes
+```
+
+| Open | What |
+|---|---|
+| http://localhost:8080 | The app (nginx serves the frontend and forwards `/api` to the backend) |
+| http://localhost:8000/docs | Backend API docs |
+
+| Command | What it does |
+|---|---|
+| `docker compose up -d --build` | Start in the background (rebuilds after code changes) |
+| `docker compose logs -f backend` | Follow the backend log |
+| `docker compose exec backend python -m unittest discover tests` | Run the tests inside the container |
+| `docker compose exec backend python evals/run_eval.py` | Run the evaluation inside the container |
+| `docker compose exec backend python -m app.reset_db --yes` | Recreate the tables (**deletes all data**) |
+| `docker compose down` | Stop (data is kept in Docker volumes) |
+| `docker compose down -v` | Stop and delete all data |
+
+Ports are set in `.env`: `FRONTEND_PORT` (default 8080) and `BACKEND_PORT` (default 8000).
+
+**Backend only** (API + its own PostgreSQL, from this repo):
+
+```bash
+cp .env.example .env            # GEMINI_API_KEY, SECRET_KEY, ADMIN_EMAIL, ADMIN_PASSWORD
+docker compose up --build       # API on http://localhost:8000 (change with BACKEND_PORT)
+```
+
+`DATABASE_URL` and `UPLOAD_DIR` from `.env` are replaced inside Docker, so the same `.env` works for local runs and containers. The frontend dev server (`npm run dev`) can use this containerised API as it is.
+
+| File | Purpose |
+|---|---|
+| `Dockerfile` | Python 3.12 slim image; installs the requirements and loads the OCR models at build time; runs as a non-root user; health check on `/health` |
+| `.dockerignore` | Keeps `.env`, `.venv`, uploads and screenshots out of the image |
+| `docker-compose.yml` | Backend + PostgreSQL 16 with volumes for the database and uploads |
 
 ## Problem & approach
 

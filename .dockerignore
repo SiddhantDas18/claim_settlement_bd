@@ -1,0 +1,16 @@
+# Not needed inside the image (and .env must never be baked into it)
+.venv
+.env
+.git
+.gitignore
+__pycache__
+**/__pycache__
+*.pyc
+uploads
+*.db
+.DS_Store
+docs/screenshots
+docs/gifs
+Dockerfile
+docker-compose.yml
+.dockerignore

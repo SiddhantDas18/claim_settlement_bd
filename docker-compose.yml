@@ -1,0 +1,36 @@
+# Backend API + its own PostgreSQL. Run: docker compose up --build
+# Needs a .env file next to this one (cp .env.example .env) with GEMINI_API_KEY, SECRET_KEY, ADMIN_EMAIL, ADMIN_PASSWORD.
+# DATABASE_URL and UPLOAD_DIR from .env are replaced below so they point inside Docker.
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: claims
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-claims}
+      POSTGRES_DB: claim_settlement
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U claims -d claim_settlement"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+
+  backend:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://claims:${POSTGRES_PASSWORD:-claims}@db:5432/claim_settlement
+      UPLOAD_DIR: /app/uploads
+      CORS_ORIGINS: '["http://localhost:5173","http://localhost:8080"]'
+    ports:
+      - "${BACKEND_PORT:-8000}:8000"
+    volumes:
+      - uploads:/app/uploads
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  db-data:
+  uploads:
